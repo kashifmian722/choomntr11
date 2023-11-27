@@ -1,0 +1,97 @@
+{% if availability == 1 %}
+    {% set availabilityClass = "normal" %}
+    {% set availabilityDisplayText = "merchantBox.availabilityBadgeOpen"|trans %}
+{% elseif availability == 2 %}
+    {% set availabilityClass = "pick-up" %}
+    {% set availabilityDisplayText = "merchantBox.availabilityBadgePickUp"|trans %}
+{% else %}
+    {% set availabilityClass = "inactive" %}
+    {% set availabilityDisplayText = "merchantBox.availabilityBadgeInactive"|trans %}
+
+{% endif %}
+
+{% if availabilityText is not empty %}
+    <div class="availability-wrapper">
+        <div class="availability-badge {{ availabilityClass }}">
+            {{ availabilityDisplayText }} 
+      </div>
+      </div>
+
+{% endif %}
+
+<div class="container">
+    <div class="text-ticker-container">
+        <div class="text-ticker">
+            <div id="ticker">{{ availabilityText }}</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: block;
+    }
+
+    .contact-information {
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-info {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .text-ticker-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .text-ticker {
+        background: #fff;
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #da3e52;
+        border-radius: 10px;
+        font-size: 50px;
+    }
+
+    #ticker {
+        display: inline-block;
+        animation: ticker-animation 15s linear infinite;
+    }
+
+    @keyframes ticker-animation {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .contact-information,
+        .social-icons {
+            flex-direction: row;
+        }
+
+        .social-icon {
+            margin-right: 5px;
+            margin-bottom: 5px; /* Reduce margin for smaller screens */
+        }
+    }
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap; /* Allow icons to wrap to a new line */
+}
+
+.social-icon {
+    margin-right: 10px;
+    margin-bottom: 10px; /* Add margin to create space between icons and allow them to wrap */
+}
+
+</style>

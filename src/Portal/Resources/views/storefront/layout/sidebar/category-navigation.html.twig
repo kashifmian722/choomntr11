@@ -1,0 +1,47 @@
+{% sw_extends '@Storefront/storefront/layout/sidebar/category-navigation.html.twig' %}
+
+{% block layout_navigation_categories_list %}
+    <style>
+        .category-navigation-horizontal {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        .category-navigation-entry {
+            margin-right: 10px; /* Adjust spacing between category links */
+        }
+
+        .category-navigation-link {
+            text-decoration: none;
+            color: #333; /* Set link color */
+        }
+
+        /* Add more CSS styling as needed */
+    </style>
+
+    <ul class="category-navigation-horizontal">
+        {% for treeItem in navigationTree %}
+            {% set name = treeItem.name %}
+            {% set categoryId = treeItem.id %}
+            <li class="category-navigation-entry">
+                <a class="category-navigation-link{% if categoryId in activeResult.path %} in-path{% endif %}"
+                   href="/merchant/{{ page.merchant.id }}/{{ categoryId }}"
+                   itemprop="url"
+                   title="{{ name }}">
+                    <span itemprop="name">{{ name }}</span>
+                </a>
+            </li>
+            {% block layout_navigation_categories_recursion %}
+                {% if level < navigationMaxDepth %}
+                    {% sw_include '@Storefront/storefront/layout/sidebar/category-navigation.html.twig' with {
+                        navigationTree: treeItem.children,
+                        activeResult: activeResult,
+                        level: level + 1
+                    } only %}
+                {% endif %}
+            {% endblock %}
+        {% endfor %}
+    </ul>
+{% endblock %}
