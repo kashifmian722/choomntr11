@@ -61,7 +61,12 @@
 
                             {% block component_merchant_availability %}
                                 {% sw_include 'storefront/component/merchant/availability-badge.html.twig' with {'availability': merchant.availability, 'availabilityText': merchant.availabilityText} %}
-                            {% endblock %}
+                          <style>
+                            .text-ticker {
+    display: none;
+}
+                            </style>
+                          {% endblock %}
 
                             {% block component_merchant_box_name %}
                                 <a href="{{ seoUrl('storefront.merchant.detail', {'id': id}) }}"

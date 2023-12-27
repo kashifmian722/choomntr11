@@ -30,6 +30,7 @@ class Migration1585140869Merchant extends MigrationStep
                 `customer_id` BINARY(16) NULL,
                 `sales_channel_id` BINARY(16) NOT NULL,
                 `category_id` BINARY(16) NULL,
+                `average_rating` DOUBLE NULL,
                 `created_at` DATETIME(3) NOT NULL,
                 `updated_at` DATETIME(3) NULL,
                 `custom_fields` json DEFAULT NULL,

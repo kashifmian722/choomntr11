@@ -10,7 +10,7 @@
                title="{{ merchant.publicCompanyName }}">
                <h4> {{ merchant.publicCompanyName }}<h4/>
  
-<a href="#" class="btn btn-primary" style="border: 1px solid #d3f9ca; border-radius: 8px; background-color: #fff; color: black; text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 5px; margin-right: 5px;" id="findinstore" onclick="window.location.href='{{ page.merchant.customFields.pinlocation }}'; return false;">
+<a href="{{ merchant.customFields.pinlocation }}" class="btn btn-primary" style="border: 1px solid #d3f9ca; border-radius: 8px; background-color: #fff; color: black; text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 5px; margin-right: 5px;" id="findinstore" onclick="window.location.href='{{ page.merchant.customFields.pinlocation }}'; return false;">
     <i class="fas fa-map-pin" style="margin-right: 3px;"></i> find in Store
 </a>
            

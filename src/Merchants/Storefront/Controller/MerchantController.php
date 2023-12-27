@@ -230,7 +230,7 @@ class MerchantController extends StorefrontController
             return $this->redirect($route);
         }
         else{
-            return  $this->redirect('https://choomntr.com/account/login');
+            return  $this->redirect('https://orkiya.com/account/login');
         }
     }
 
@@ -271,11 +271,45 @@ class MerchantController extends StorefrontController
             return $this->redirect($route);
         }
         else{
-            return  $this->redirect('https://choomntr.com/account/login');
+            return  $this->redirect('https://orkiya.com/account/login');
         }
     }
 
 
+// src/Merchants/Content/Merchant/Api/MerchantProductController.php
+
+/**
+ * @Route(name="merchant-api.merchant.product.search", path="/merchant-api/v{version}/products/search", methods={"GET"})
+ */
+public function searchProducts(Request $request, MerchantEntity $merchant): JsonResponse
+{
+    $searchTerm = $request->query->get('search', '');
+
+    $criteria = new Criteria();
+    $criteria->addAssociation('merchants');
+    $criteria->addFilter(new EqualsFilter('merchants.id', $merchant->getId()));
+    $criteria->addFilter(new ContainsFilter('name', $searchTerm)); // Filter products by name containing the search term
+    $criteria->addSorting(new FieldSorting('name', FieldSorting::ASCENDING));
+
+    $products = $this->productRepository->search($criteria, Context::createDefaultContext());
+
+    $productsArray = [];
+    /** @var ProductEntity $product */
+    foreach ($products as $product) {
+        $productsArray[] = [
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            // Add other product fields you want to include in the response
+        ];
+    }
+
+    return new JsonResponse([
+        'data' => $productsArray,
+        'total' => $products->getTotal()
+    ]);
+}
+  
+  
         /**
      * @Route("/merchant/{id}/recommended", name="storefront.merchant.recommended", defaults={"csrf_protected"=false})
      */
@@ -302,7 +336,7 @@ class MerchantController extends StorefrontController
             return $this->redirect($route);
         }
         else{
-            return  $this->redirect('https://choomntr.com/account/login');
+            return  $this->redirect('https://orkiya.com/account/login');
         }
     }
 

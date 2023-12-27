@@ -28,7 +28,6 @@ use Symfony\Component\Validator\Constraints\Type;
 class ProfileController
 {
     private const COVER_UPLOAD_NAME = 'cover';
-    private const LOGO_UPLOAD_NAME = 'logoimg';
 
     /**
      * @var EntityRepositoryInterface
@@ -142,38 +141,7 @@ class ProfileController
             ], $salesChannelContext->getContext());
         }
         
-        if($dataBag->has('tags')){
-            $this->merchantRepository->update([
-                [
-                    'id' => $merchant->getId(),
-                    "customFields" => [
-                        "tags" => $dataBag->get("tags")
-                    ]
-                ]
-                
-
-            ], $salesChannelContext->getContext());
-        }
-
-        
-      	if($dataBag->has('pinlocation')){
-            $this->merchantRepository->update([
-                [
-                    'id' => $merchant->getId(),
-                    "customFields" => [
-                        "pinlocation" => $dataBag->get("pinlocation")
-                    ]
-                ]
-                
-
-            ], $salesChannelContext->getContext());
-        }
-
-        if ($dataBag->has('services')) {
-            $this->cleanupServices($merchant, array_column($dataBag->all()['services'], 'id'));
-        }
-
-          if ($dataBag->has('googlemap')) {
+                 if ($dataBag->has('googlemap')) {
     $this->merchantRepository->update([
         [
             'id' => $merchant->getId(),
@@ -183,7 +151,7 @@ class ProfileController
         ]
     ], $salesChannelContext->getContext());
 }
-               
+                
       
         return new JsonResponse($this->fetchProfileData($salesChannelContext, $merchant));
     }
@@ -205,13 +173,7 @@ class ProfileController
      *                     type="string",
      *                     format="file",
      *                 ),
-    *                     @OA\Property(
-     *                     description="Logo file to upload",
-     *                     property="logoimg",
-     *                     type="string",
-     *                     format="file",
-     *                 ),
-     *                 required={"file"}
+         *                 required={"file"}
      *             )
      *         )
      *     ),
@@ -255,38 +217,6 @@ class ProfileController
 
         return new JsonResponse(true);
     }
-    public function uploadLogo(MerchantEntity $merchant, Request $request, SalesChannelContext $salesChannelContext): JsonResponse
-    {
-        $uploadedMedia = [];
-        $logo = [];
-    
-        foreach ($request->files as $name => $upload) {
-            try {
-                $mediaId = $this->uploader->upload($upload, 'merchants', 'merchant_images', $salesChannelContext->getContext());
-            } catch (UploadException $e) {
-                continue;
-            }
-    
-            $uploadedMedia[] = ['id' => $mediaId];
-    
-            if ($name === self::LOGO_UPLOAD_NAME) {
-                $logo = ['logoId' => $mediaId];
-            }
-        }
-    
-        $additionalMediaAssociations = [
-            'id' => $merchant->getId(),
-            'media' => $uploadedMedia,
-            'logo' => $logo,
-        ];
-    
-        $this->merchantRepository->update(
-            [array_merge($additionalMediaAssociations)],
-            $salesChannelContext->getContext()
-        );
-    
-        return new JsonResponse(true);
-    }
     /**
      * @OA\Delete(
      *      path="/profile/media/{mediaId}",
@@ -328,14 +258,16 @@ class ProfileController
             ->add('publicPhoneNumber', new Type('string'))
             ->add('publicEmail', new Type('string'))
             ->add('publicOpeningTimes', new Type('string'))
-            ->add('whatsappUrl', new Type('string'))
-            ->add('facebookUrl', new Type('string'))
-            ->add('instagramUrl', new Type('string'))
-            ->add('twitterUrl', new Type('string'))
-            ->add('youtubeUrl', new Type('string'))
+            ->add('whatsapp', new Type('string'))
+            ->add('facebook', new Type('string'))
+            ->add('instagram', new Type('string'))
+            ->add('twitter', new Type('string'))
+            ->add('youtube', new Type('string'))
             ->add('longitude', new Type('string'))
             ->add('latitude', new Type('string'))
             ->add('radius', new Type('string'))
+            ->add('locationpin', new Type('string'))
+            ->add('tags', new Type('string'))
             ->add('publicDescription', new Type('string'))
             ->add('publicWebsite', new Type('string'))
             ->add('categoryId', new EntityExists(['entity' => 'category', 'context' => $salesChannelContext->getContext()]))

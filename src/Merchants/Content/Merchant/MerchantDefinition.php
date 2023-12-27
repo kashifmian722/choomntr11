@@ -97,6 +97,10 @@ class MerchantDefinition extends EntityDefinition
             (new StringField('longitude', 'longitude'))->addFlags(),
             (new StringField('latitude', 'latitude'))->addFlags(),
             (new StringField('radius', 'radius'))->addFlags(),
+            (new StringField('locationpin', 'locationpin'))->addFlags(),
+            (new StringField('googlemap', 'googlemap'))->addFlags(),
+            (new StringField('tags', 'tags'))->addFlags(),
+
 
             (new FkField('country_id', 'countryId', CountryDefinition::class))->addFlags(),
             (new OneToOneAssociationField('country', 'country_id', 'id', CountryDefinition::class)),
@@ -125,9 +129,6 @@ class MerchantDefinition extends EntityDefinition
 
             (new FkField('cover_id', 'coverId', MediaDefinition::class)),
             (new OneToOneAssociationField('cover', 'cover_id', 'id', MediaDefinition::class, false))->addFlags(new CascadeDelete()),
-
-            (new FkField('logo_id', 'logoId', MediaDefinition::class)),
-            (new OneToOneAssociationField('logo', 'logo_id', 'id', MediaDefinition::class, false))->addFlags(new CascadeDelete()),
 
             (new OneToManyAssociationField('resetPasswordTokens', MerchantResetPasswordTokenDefinition::class, 'merchant_id'))->addFlags(new CascadeDelete()),
             (new OneToManyAssociationField('accessTokens', MerchantAccessTokenDefinition::class, 'merchant_id'))->addFlags(new CascadeDelete()),

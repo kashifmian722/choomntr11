@@ -117,6 +117,24 @@ class MerchantEntity extends Entity
      * @OA\Property()
      */
     protected $radius;
+  
+      /**
+     * @var string|null
+     * @OA\Property()
+     */
+    protected $locationpin;
+
+    /**
+     * @var string|null
+     * @OA\Property()
+     */
+    protected $googlemap;
+
+    /**
+     * @var string|null
+     * @OA\Property()
+     */
+    protected $tags;
 
     /**
      * @var string|null
@@ -236,21 +254,14 @@ class MerchantEntity extends Entity
      */
     protected $coverId;
 
-    /**
-     * @var string|null
-     * @OA\Property()
-     */
-    protected $logoId;
+
 
     /**
      * @var MediaEntity|null
      */
     protected $cover;
 
-    /**
-     * @var MediaEntity|null
-     */
-    protected $logo;
+
 
     /**
      * @var string|null
@@ -470,6 +481,36 @@ class MerchantEntity extends Entity
     {
         $this->radius = $radius;
     }
+  
+      public function getlocationpin(): ?string
+    {
+        return $this->locationpin;
+    }
+
+    public function setlocationpin(?string $locationpin): void
+    {
+        $this->locationpin = $locationpin;
+    }
+
+    public function getgooglemap(): ?string
+    {
+        return $this->googlemap;
+    }
+
+    public function setgooglemap(?string $googlemap): void
+    {
+        $this->radius = $googlemap;
+    }
+
+    public function gettags(): ?string
+    {
+        return $this->tags;
+    }
+
+    public function settags(?string $tags): void
+    {
+        $this->radius = $tags;
+    }
 
     public function getPublicDescription(): ?string
     {
@@ -682,29 +723,7 @@ class MerchantEntity extends Entity
         $this->coverId = $coverId;
     }
 
-    public function getlogo(): ?MediaEntity
-    {
-        return $this->logo;
-    }
-
-    /**
-     * @param MediaEntity|null $logo
-     */
-    public function setlogo(?MediaEntity $logo): void
-    {
-        $this->logo = $logo;
-    }
-
-    public function getlogoId(): ?string
-    {
-        return $this->logoId;
-    }
-
-    public function setlogoId(?string $logoId): void
-    {
-        $this->logoId = $logoId;
-    }
-
+   
     public function getImprint(): ?string
     {
         return $this->imprint;

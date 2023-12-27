@@ -20,12 +20,12 @@ class Migration1585254108MerchantProfile extends MigrationStep
             DROP COLUMN `name`,
             DROP COLUMN `description`,
 
-            ADD `public_company_name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-            ADD `public_phone_number` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-            ADD `public_email` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+            ADD `public_company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+            ADD `public_phone_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+            ADD `public_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             ADD `public_opening_times` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             ADD `public_description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-            ADD `public_website` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+            ADD `tags` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 
             ADD `first_name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             ADD `last_name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -34,6 +34,11 @@ class Migration1585254108MerchantProfile extends MigrationStep
             ADD `city` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             ADD `country` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             ADD `whatsapp` TEXT DEFAULT NULL,
+            ADD `locationpin` TEXT DEFAULT NULL,
+            ADD `googlemap` TEXT DEFAULT NULL,
+            ADD `public_website` TEXT DEFAULT NULL,
+
+
             ADD `facebook` TEXT DEFAULT NULL,
             ADD `instagram` TEXT DEFAULT NULL,
             ADD `twitter` TEXT DEFAULT NULL,

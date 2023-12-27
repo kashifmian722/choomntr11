@@ -121,11 +121,12 @@ class SystemInstallCommand extends Command
                 'identifier' => 'Voucher',
                 '--all'  => true,
             ],
-          [
+            [
                 'command' =>'database:migrate',
                 'identifier' => 'LocalDelivery',
                 '--all'  => true,
             ],
+
             [
                 'command' => 'database:migrate-destructive',
                 '--all'  => true,

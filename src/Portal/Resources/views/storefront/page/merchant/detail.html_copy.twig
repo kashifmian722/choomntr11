@@ -1,14 +1,5 @@
 {% sw_extends '@Storefront/storefront/base.html.twig' %}
-{% block head %}
-    {{ parent() }}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ page.merchant.publicCompanyName }}" />
-    <meta property="og:description" content="Description of the merchant or their services" />
-    <meta property="og:url" content="{{ app.request.uri }}" />
-    <meta property="og:image" content="{{ page.merchant.cover.media.url }}" />
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="300" />
-{% endblock %}
+
 {% block base_header %}
     <header class="header-main">
         {% block base_header_inner %}
@@ -25,7 +16,19 @@
             </div>
         {% endif %}
     </header>
-  <style>
+{% endblock %}
+
+{% block base_main_inner %}
+    <div class="row fullsize{% if not page.merchant.publicDescription %} no-description{% endif %}" id="merchant-header-banner">
+
+        {% if page.merchant.cover is not defined %}
+        <div class="container">
+        {% endif %}
+
+        {# Image #}
+        {% if page.merchant.cover %}
+          
+    <style>
      
         .merchant-image img {
             object-fit: cover;
@@ -45,13 +48,13 @@
           cursor: pointer;
           width: 30px;
           height: 30px;
-          background-image: url('https://choomntr.b-cdn.net/media/c9/fd/cf/1701180149/icons8-star-48.png'); /* Use your star icon image path */
+          background-image: url('https://orkiya1.b-cdn.net/media/66/c0/37/1691871429/star-illustrations-single-star-free-png (1).png'); /* Use your star icon image path */
           background-size: cover;
           background-repeat: no-repeat;
         }
 
         .rating input:checked ~ label {
-          background-image: url('https://choomntr.b-cdn.net/media/08/64/e7/1701180207/icons8-star-49.png'); /* Use your filled star icon image path */
+          background-image: url('https://orkiya1.b-cdn.net/media/b7/37/f3/1691870905/star-illustrations-single-star-free-png.png'); /* Use your filled star icon image path */
         }
         :root {
           --star-size: 30px;
@@ -218,23 +221,9 @@ a {
 }
 </style>
 
-{% endblock %}
-
-{% block base_main_inner %}
-    <div class="row fullsize{% if not page.merchant.publicDescription %} no-description{% endif %}" id="merchant-header-banner">
-
-        {% if page.merchant.cover is not defined %}
-        <div class="container">
-        {% endif %}
-
-        {# Image #}
-          
-  
 <div class="col-12 col-md-12 col-lg-12 merchant-image">
-            <div class="merchant-image-container"{% if not page.merchant.cover %} style="min-height: 300px; background-color: #e1e1e1;"{% endif %}>
-        {% if page.merchant.cover %}
-
-              {% sw_thumbnails 'merchant-thumbnails' with {
+    <div class="merchant-image-container">
+        {% sw_thumbnails 'merchant-thumbnails' with {
             media: page.merchant.cover,
             sizes: {
                 'default': '1920px'
@@ -269,8 +258,7 @@ a {
 
    
             {% endblock %}
-                  <br>
-
+                  
     <div class="row fullsize merchant-information">
         <div class="col-md-6 col-lg-6">
         
@@ -278,7 +266,7 @@ a {
       {# Intro #}
             <div class="col-12">
                 <div style="display: flex; align-items: flex-end;">
-    <h1 style="margin-top: 20px;">{{ page.merchant.publicCompanyName }}</h1> 
+    <h1 style="margin-right: 3px;">{{ page.merchant.publicCompanyName }}</h1> 
                   <h6 style="font-weight: bold; margin-left: 3px; color: var(--primary-color);">Check-In ({{ page.merchant.customFields.checkin }})</h6>
               </div>
               <div>
@@ -325,7 +313,7 @@ a {
 
         const rate = $('input[name="rating"]:checked').val();
         if (rate) {
-            window.location.href = 'https://orkiya.com/merchant/'+ merchantId +'/rate/' + rate;
+            window.location.href = 'https://choomntr.com/merchant/'+ merchantId +'/rate/' + rate;
         } else {
             alert('Please Rate first before submit.');
         }
@@ -360,48 +348,62 @@ a {
                  <div class="row">
     <!-- WhatsApp -->  
 
-   {% if page.merchant.whatsapp %}
-    <!-- TR-WP.COM -->
+    {% if page.merchant.customFields.whatsapp %}
+   <!-- TR-WP.COM -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-    <div class="trwpwhatsappall">
-        <div class="trwpwhatsappballon">
-            <span id="kapatac" class="kapat">X</span>
-            <div class="trwpwhatsapptitle">Whatsapp Chat</div>
-            <div class="trwpwhatsappmessage">Assalam o Alaikum, How may we help you</div>
-            <div class="trwpwhatsappinput">
-                <form action="https://web.whatsapp.com/send?" method="get" target="_blank">
-                    <input type="text" id="mensaje" name="{{ page.merchant.whatsapp }}" placeholder="Type your message here" autocomplete="off">
-                    <button id="send_message" class="trwpwhatsappsendbutton" type="button">
-                        <i class="fa fa-paper-plane-o"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
+<!-- TR-WP.COM -->
 
-        <div id="ackapa" class="trwpwhatsappbutton">
-            <i class="fa fa-whatsapp"></i> <span>Chat with merchant</span>
-        </div>
-    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-    <script>
-        document.querySelector('#send_message').addEventListener('click', function() {
-            var message = document.querySelector('#mensaje').value;
-            var whatsappNumber = "{{ page.merchant.whatsapp }}";
-            var url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message) + "&phone=" + encodeURIComponent(whatsappNumber);
-            window.open(url);
-        });
+<div class="trwpwhatsappall">
+<div class="trwpwhatsappballon">
+ <span id="kapatac" class="kapat">X</span>
+  <div class="trwpwhatsapptitle">
+Whatsapp Chat  </div>
+  <div class="trwpwhatsappmessage">
+Assalam o Alaikum, How may we help you  </div>
+  <div class="trwpwhatsappinput">
+    <form action="https://web.whatsapp.com/send?" method="get" target="_blank">
+      <input type="text" name="{{ page.merchant.customFields.whatsapp }}" placeholder="Type your message here" autocomplete="off">
+      <button class="trwpwhatsappsendbutton" type="submit">
+      <i class="fa fa-paper-plane-o"></i>
+      </button>
+    </form>
+  </div>
+</div>
 
-        $(document).ready(function () {
-            $("#ackapa").click(function () {
-                $(".trwpwhatsappballon").toggle(1000);
-            });
-            $("#kapatac").click(function () {
-                $(".trwpwhatsappballon").toggle(1000);
-            });
-        });
-    </script>
+
+<div id="ackapa" class="trwpwhatsappbutton">
+<i class="fa fa-whatsapp"></i> <span>Chat with merchant</span>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+function sendWhatsAppMessage() {
+    // Get the user-entered message from the input field
+    var userMessage = document.getElementById('whatsappMessageInput').value;
+
+    // Construct the WhatsApp URL with the message and phone number
+    var whatsappURL = "https://api.whatsapp.com/send?phone={{ merchant.customFields.whatsapp }}&text=" + encodeURIComponent(userMessage);
+
+    // Navigate to the WhatsApp URL
+    window.location.href = whatsappURL;
+
+    // Prevent the form from submitting
+    return false;
+}
+
+$(document).ready(function () {
+    $("#ackapa").click(function () {
+        $(".trwpwhatsappballon").toggle(1000);
+    });
+    $("#kapatac").click(function () {
+        $(".trwpwhatsappballon").toggle(1000);
+    });
+});
+</script>
+
 {% endif %}
 
 
@@ -562,24 +564,24 @@ function sendTwitterMessage() {
    {% if page.merchant.publicEmail %}
             <a href="tel:{{ page.merchant.publicEmail }}" class="social-icon fa fa-envelope wiggler em iconTransition" target="_blank"></a>
             {% endif %}
-            {% if page.merchant.facebook %}
-            <a href="{{ page.merchant.facebook }}" class="social-icon fa fa-facebook wiggler fb iconTransition" target="_blank"></a>
+            {% if page.merchant.customFields.facebook %}
+            <a href="{{ page.merchant.customFields.facebook }}" class="social-icon fa fa-facebook wiggler fb iconTransition" target="_blank"></a>
             {% endif %}
 
-            {% if page.merchant.twitter %}
-            <a href="{{ page.merchant.twitter }}" class="social-icon fa fa-twitter wiggler tw iconTransition" target="_blank"></a>
+            {% if page.merchant.customFields.twitter %}
+            <a href="{{ page.merchant.customFields.twitter }}" class="social-icon fa fa-twitter wiggler tw iconTransition" target="_blank"></a>
             {% endif %}
 
-            {% if page.merchant.youtube %}
-            <a href="{{ page.merchant.youtube }}" class="social-icon fa fa-youtube wiggler yt iconTransition" target="_blank"></a>
+            {% if page.merchant.customFields.youtube %}
+            <a href="{{ page.merchant.customFields.youtube }}" class="social-icon fa fa-youtube wiggler yt iconTransition" target="_blank"></a>
             {% endif %}
 
-            {% if page.merchant.instagram %}
-            <a href="{{ page.merchant.instagram }}" class="social-icon fa fa-instagram wiggler dr iconTransition" target="_blank"></a>
+            {% if page.merchant.customFields.instagram %}
+            <a href="{{ page.merchant.customFields.instagram }}" class="social-icon fa fa-instagram wiggler dr iconTransition" target="_blank"></a>
             {% endif %}
         
-            {% if page.merchant.tiktok %}
-            <a href="{{ page.merchant.tiktok }}" class="social-icon fab fa-tiktok wiggler tk iconTransition" target="_blank"></a>
+            {% if page.merchant.customFields.tiktok %}
+            <a href="{{ page.merchant.customFields.tiktok }}" class="social-icon fab fa-tiktok wiggler tk iconTransition" target="_blank"></a>
             {% endif %}
    
         </div>

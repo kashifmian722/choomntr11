@@ -32,7 +32,7 @@
     },
     "mail": {
         "merchant_order_confirmation": {
-            "subject": "New order at Downtown",
+            "subject": "New order at ChooMNTR",
             "hello": "Hello %merchant%,",
             "youHaveNewOrder": "You have received a new order.",
             "orderItems": "Order items",
@@ -48,13 +48,13 @@
             "deliveryAddress": "Delivery address"
         },
         "merchant_registration": {
-            "subject": "Your registration at Downtown",
+            "subject": "Your registration at ChooMNTR",
             "hello": "Hello %merchant%,",
             "text": "Please confirm your e-mail address. After confirming, you will be re-directed to the portal and be able to log in.",
             "confirmButton": "Confirm e-mail"
         },
         "merchant_reset_password": {
-            "subject": "Forgotten password Downtown request",
+            "subject": "Forgotten password ChooMNTR request",
             "hello": "Hello %merchant%,",
             "text": "A request has been made in the portal to reset your password.<br>\nPlease confirm the link below to define a new password.",
             "confirmButton": "Reset password"
@@ -92,14 +92,14 @@
             "deliveryAddress": "Delivery address"
         },
         "organization_registration": {
-            "subject": "Your account at Downtown",
+            "subject": "Your account at ChooMNTR",
             "hello": "Hello %name%, <br>your Organization account has been created. You can login now with the following credentials:",
             "email": "E-Mail",
             "password": "Password",
             "loginButton": "Login"
         },
         "organization_reset_password": {
-            "subject": "Forgotten password Downtown request",
+            "subject": "Forgotten password ChooMNTR request",
             "hello": "Hello %name%,",
             "text": "A request has been made in the portal to reset your password.<br>\nPlease confirm the link below to define a new password.",
             "confirmButton": "Reset password"
@@ -121,7 +121,7 @@
         "privacy": "Privacy"
     },
     "footer": {
-        "copyrightInfo": "Realised with Downtown",
+        "copyrightInfo": "Realised with ChooMNTR",
         "links": {
             "merchant": "Merchant Login",
             "imprint": "Imprint",
@@ -130,10 +130,10 @@
         }
     },
     "merchantsBanner": {
-        "headline": "Help together and be there!",
-        "subline": "Use the power of our community against the Corona crisis",
+        "headline": "Join Now and Amplify Your Retail Business!",
+        "subline": "Elevate Your Reach and Boost Sales. Don't Miss Out on the Next Level of Retail Success!",
         "button": {
-            "text": "Register as a merchant"
+            "text": "Register as a Sodagar"
         }
     },
     "merchantBox": {

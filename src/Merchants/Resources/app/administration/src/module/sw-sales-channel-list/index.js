@@ -1,27 +1,76 @@
-import './page/sw-sales-channel-list-overview';
+import template from './sw-sales-channel-list-overview.html.twig';
 
-const { Module } = Shopware;
+const { Component, Mixin } = Shopware;
+const { Criteria } = Shopware.Data;
 
-Module.register('sw-sales-channel-list', {
-    type: 'plugin',
-    name: 'SalesChannelList',
-    title: 'sw-sales-channel-list.grid.headline',
-    description: 'SalesChannel List Module',
-    color: '#14D7A5',
-    icon: 'default-device-server',
+Component.register('sw-sales-channel-list-overview', {
+    template,
 
-    routes: {
-        overview: {
-            component: 'sw-sales-channel-list-overview',
-            path: 'overview'
-        },
+    inject: ['repositoryFactory'],
+
+    mixins: [
+        Mixin.getByName('listing'),
+    ],
+
+    data() {
+        return {
+            salesChannels: null,
+            repository: null,
+            showModal: false,
+        };
     },
 
-    navigation: [{
-        label: 'sw-sales-channel-list.menu-label',
-        color: '#14D7A5',
-        path: 'sw.sales.channel.list.overview',
-        icon: 'default-device-server',
-        position: 70
-    }]
+    metaInfo() {
+        return {
+            title: this.$createTitle()
+        };
+    },
+
+    computed: {
+        salesChannelRepository() {
+            this.repository = this.repositoryFactory.create('sales_channel');
+            return this.repository;
+        },
+
+        columns() {
+            return [{
+                property: 'name',
+                dataIndex: 'name',
+                label: 'sw-sales-channel-list.grid.columns.name',
+                routerLink: 'sw.sales.channel.detail.base',
+                allowResize: true,
+                primary: true
+            }, {
+                property: 'domains',
+                label: 'sw-sales-channel-list.grid.columns.domain',
+                allowResize: true,
+                sortable: false,
+            }, {
+                property: 'active',
+                dataIndex: 'active',
+                label: 'sw-sales-channel-list.grid.columns.active',
+                allowResize: true,
+            }];
+        }
+    },
+
+    methods: {
+        getList() {
+            this.loadEntityData();
+        },
+
+        loadEntityData() {
+            const criteria = new Criteria(this.page, this.limit);
+
+            criteria.setTerm(this.term);
+            criteria.addSorting(Criteria.sort('sales_channel.name', 'ASC'));
+            criteria.addAssociation('type');
+            criteria.addAssociation('domains');
+
+            this.salesChannelRepository.search(criteria, Shopware.Context.api).then((response) => {
+                this.total = response.total;
+                this.salesChannels = response;
+            });
+        },
+    }
 });
