@@ -1,0 +1,55 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/cross-selling/tabs.html.twig' %}
+
+{% block page_product_detail_cross_selling_tabs_inner %}
+    <div class="card card-tabs cross-selling-plugin-block" data-cross-selling="true">
+        {% for item in crossSellings|filter(item => item.total > 0 and item.crossSelling.active == true) %}
+            {% set id = item.crossSelling.id %}
+            <div class="cross-selling-title">
+                {{ item.crossSelling.name }}
+            </div>
+            <div class="cross-selling-entry">
+                {% set config = {
+                    'title': {
+                        'value': item.crossSelling.name
+                    },
+                    'border': {
+                        'value': false
+                    },
+                    'rotate': {
+                        'value': false
+                    },
+                    'products': {
+                        'value': item.getProducts()
+                    },
+                    'boxLayout': {
+                        'value': 'standard'
+                    },
+                    'elMinWidth': {
+                        'value': '300px'
+                    },
+                    'navigation': {
+                        'value': true
+                    },
+                    'displayMode': {
+                        'value': 'minimal'
+                    },
+                    'verticalAlign': {
+                        'value': 'top'
+                    },
+                } %}
+
+                {% sw_include "@Storefront/storefront/element/cms-element-product-slider.html.twig" with {
+                    sliderConfig: config,
+                    element: {
+                        'data': {
+                            'products': {
+                                elements: item.getProducts()
+                            }
+                        },
+                        type: 'product-slider'
+                    }
+                } %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

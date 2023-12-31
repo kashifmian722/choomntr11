@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../platform/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+
+        <input-field type="single-select">
+            <name>qrCodeData</name>
+            <copyable>true</copyable>
+            <required>true</required>
+            <label>QR-Code content</label>
+            <label lang="de-DE">QR-Code Inhalt</label>
+            <defaultValue>0</defaultValue>
+            <options>
+                <option>
+                    <id>0</id>
+                    <name>Link to Product detailpage</name>
+                    <name lang="de-DE">Link zur Produkt Detailansicht</name>
+                </option>
+                <option>
+                    <id>1</id>
+                    <name>Productnumber</name>
+                    <name lang="de-DE">Produktnummer</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="single-select">
+            <name>qrCodeLayout</name>
+            <copyable>true</copyable>
+            <required>true</required>
+            <label>QR-Code position</label>
+            <label lang="de-DE">QR-Code Position</label>
+            <defaultValue>0</defaultValue>
+            <options>
+                <option>
+                    <id>0</id>
+                    <name>QR-Code in own column</name>
+                    <name lang="de-DE">QR-Code in eigener Spalte</name>
+                </option>
+                <option>
+                    <id>1</id>
+                    <name>QR-Code below the product description</name>
+                    <name lang="de-DE">QR-Code unterhab der Produktbeschreibung</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field>
+            <name>qrCodeImageWidth</name>
+            <copyable>true</copyable>
+            <required>true</required>
+            <label>QR-Code image width</label>
+            <label lang="de-DE">QR-Code Bildbreite</label>
+            <defaultValue>60px</defaultValue>
+        </input-field>
+    </card>
+</config>

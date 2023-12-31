@@ -1,0 +1,17 @@
+{
+    "sw-cms": {
+        "blocks": {
+            "text": {
+                "lae-prism-html": {
+                    "label": "Prism Code Editor Block"
+                }
+            }
+        },
+        "elements": {
+            "lae-prism-html": {
+                "label": "Prism Code Editor",
+                "no-preview": "Die Vorschau von Code-Elementen ist aus Sicherheitsgründen nicht aktiviert."
+            }
+        }
+    }
+}

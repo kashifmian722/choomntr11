@@ -1,0 +1,8 @@
+{% block sw_cms_element_lae_prism_html_config %}
+    <div class="sw-cms-el-config-lae-prism-html">
+        <prism-editor class="my-editor"
+                      v-model="element.config.content.value"
+                      :highlight="highlighter"
+                      line-numbers></prism-editor>
+    </div>
+{% endblock %}

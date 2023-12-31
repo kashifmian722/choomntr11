@@ -1,0 +1,27 @@
+{% block frosh_product_compare_overview_section %}
+    <tbody id="overview" data-filter="target">
+        <tr>
+            <th class="text-uppercase" colspan="{{ productsCount + 1 }}">{{ "froshProductCompare.section.overview.title"|trans|sw_sanitize }}</th>
+        </tr>
+        <tr>
+            <th>{{ "froshProductCompare.section.overview.manufacturer"|trans|sw_sanitize }}</th>
+            {% sw_include '@Storefront/storefront/component/compare/partial/translated-nested-attribute-cells.html.twig' with {
+                attribute: 'manufacturer'
+            } %}
+        </tr>
+        <tr>
+            <th>{{ "froshProductCompare.section.overview.price"|trans|sw_sanitize }}</th>
+            {% sw_include '@Storefront/storefront/component/compare/partial/price-cells.html.twig' %}
+        </tr>
+        <tr>
+            <th>{{ "froshProductCompare.section.overview.description"|trans|sw_sanitize }}</th>
+            {% sw_include '@Storefront/storefront/component/compare/partial/description-cells.html.twig' %}
+        </tr>
+        {% if shopware.config.detail.showReviews %}
+            <tr>
+                <th>{{ "froshProductCompare.section.overview.rating"|trans|sw_sanitize }}</th>
+                {% sw_include '@Storefront/storefront/component/compare/partial/rating-cells.html.twig' %}
+            </tr>
+        {% endif %}
+    </tbody>
+{% endblock %}

@@ -1,0 +1,39 @@
+{
+    "name": "webkul/webkul-pos",
+    "description": "Point Of Sale Plugin",
+    "type": "shopware-platform-plugin",
+    "version": "1.1.6",
+    "license": "proprietary",
+    "authors": [{
+        "name": "Webkul Software Pvt. Ltd.",
+        "homepage": "https://webkul.com",
+        "role": "Manufacturer"
+    }],
+    "require": {
+        "shopware/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebkulPOS\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "WebkulPOS\\WebkulPOS",
+        "label": {
+            "de-DE": "Kasse",
+            "en-GB": "Point of Sale"
+        },
+        "description": {
+            "de-DE": "Ein Point of Sale (POS) ist ein Ort, an dem der Verbraucher die Zahlung für Produkte und Dienstleistungen abschließt. Hier wird das Einzelhandelsgeschäft abgeschlossen. Die Verkaufsstelle erleichtert es dem Verkäufer, seinen Online-Shop und einen physischen Shop gleichzeitig ordnungsgemäß zu verwalten.",
+            "en-GB": "A point of sale (POS) is a place where the consumer completes payment for products and services. It is the place where the retail business is completed. The point of sale makes it easy for the seller to properly manage their online shop and a physical shop at the same time."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/webku88542158458/pos-system-point-of-sale-fuer-shopware.html",
+            "en-GB": "https://store.shopware.com/webku88542158458/pos-system-point-of-sale-fuer-shopware.html"
+        },
+        "supportLink": {
+            "de-DE": "https://store.webkul.com/support.html",
+            "en-GB": "https://store.webkul.com/support.html"
+        }
+    }
+}

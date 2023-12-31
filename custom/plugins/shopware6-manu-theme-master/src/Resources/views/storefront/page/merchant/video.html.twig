@@ -1,0 +1,61 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+    <div class="product-detail-video tab-pane-container">
+        {% block page_product_detail_video_content %}
+            {% set ids = page.merchant.translated["customFields"]["youtube"]|split(',') %}
+
+            {% for id in ids %}
+                <div class="product-video embed-responsive embed-responsive-16by9" itemprop="video">
+                    <div class="responsive-video">
+                        <div id="player_{{ id|trim }}" class="embed-responsive-item"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+
+    <script>
+        // Load the YouTube IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Create an array to hold the player objects.
+        var players = {};
+
+        // This function creates an IFrame player for each video after the API code downloads.
+        function onYouTubeIframeAPIReady() {
+            var ids = {{ ids|json_encode() }};
+            for (var i = 0; i < ids.length; i++) {
+                createYouTubePlayer(ids[i]);
+            }
+        }
+
+        // Create a YouTube player for a specific video.
+        function createYouTubePlayer(videoId) {
+            players[id] = new YT.Player('player_' + id, {
+                height: '390',
+                width: '640',
+                videoId: id,
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        // The API will call this function when a video player is ready.
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        // The API calls this function when the player's state changes.
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                // The player started playing the video.
+            }
+        }
+    </script>
+{% endblock %}

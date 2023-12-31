@@ -1,0 +1,385 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-image-gallery.html.twig' %}
+
+{% block element_image_gallery_inner_items %}
+  {% set isMappedToProductMedia = element.config.sliderItems.source == 'mapped' and element.config.sliderItems.value == 'product.media' %}
+  {% set mediaItems = isProduct or isMappedToProductMedia ? page.product.media : mediaItems %}
+
+  {% block solid_pv_element_image_gallery_inner_items %}
+    {% for mediaItem in mediaItems %}
+      {% block element_image_gallery_inner_item %}
+        <div class="gallery-slider-item-container">
+          {% if (isProduct or isMappedToProductMedia) and ((mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) or mediaItem.media.mimeType | split('/')[0] == 'video') %}
+            {% set isVideo = true %}
+          {% endif %}
+
+          <div class="gallery-slider-item is-{{ displayMode }} {% if isVideo %}is-video{% else %}js-magnifier-container{% endif %}"{% if minHeight and  (displayMode == "cover" or displayMode == "contain" ) %} style="min-height: {{ minHeight }}"{% endif %}>
+            {% set attributes = {
+              'class': 'img-fluid gallery-slider-image' ~ (isVideo ?: ' magnifier-image js-magnifier-image'),
+              'alt': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.alt ?: fallbackImageTitle) : (mediaItem.translated.alt ?: fallbackImageTitle)),
+              'title': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.title ?: fallbackImageTitle) : (mediaItem.translated.title ?: fallbackImageTitle)),
+              'data-full-image': (isVideo ?: (isProduct or isMappedToProductMedia ? mediaItem.media.url : mediaItem.url))
+            } %}
+
+            {% if displayMode == 'cover' or displayMode == 'contain' %}
+              {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
+            {% endif %}
+
+            {% if (isProduct or isMappedToProductMedia) and not isVideo %}
+              {% set attributes = attributes|merge({ 'itemprop': 'image' }) %}
+            {% endif %}
+
+            {% block solid_pv_gallery_slider_image_conditions %}
+              {% if (isProduct or isMappedToProductMedia) and (mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) %}
+                {% if mediaItem.customFields.pv_source == 'youtube' %}
+                  {% block solid_pv_gallery_slider_image_youtube %}
+                    {% set video_id = mediaItem.customFields.pv_url | split('v=') | last %}
+
+                    {% if video_id %}
+                      <div class="solid-pv-container">
+                        <div class="solid-pv-item">
+                          <iframe
+                            class="youtube"
+                            src="https://www.youtube-nocookie.com/embed/{{ video_id }}?disablekb=1&color=white&enablejsapi=1&loop=1&playlist={{ video_id }}"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                            title="YouTube">
+                          </iframe>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endblock %}
+                {% elseif mediaItem.customFields.pv_source == 'vimeo' %}
+                  {% block solid_pv_gallery_slider_image_vimeo %}
+                    {% set video_id = mediaItem.customFields.pv_url | split('vimeo.com/') | last %}
+
+                    {% if video_id %}
+                      <div class="solid-pv-container">
+                        <div class="solid-pv-item">
+                          <iframe
+                            class="vimeo"
+                            src="https://player.vimeo.com/video/{{ video_id }}?color=ffffff&title=0&byline=0&portrait=0&dnt=1&loop=1"
+                            allow="autoplay; fullscreen"
+                            title="Vimeo">
+                          </iframe>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endblock %}
+                {% endif %}
+              {% elseif (isProduct or isMappedToProductMedia) and mediaItem.media.mimeType | split('/')[0] == 'video' %}
+                {% block solid_pv_gallery_slider_image_video %}
+                  <div class="solid-pv-container">
+                    <div class="solid-pv-item">
+                      <video controls preload="none" loop>
+                        <source src="{{ mediaItem.media.url }}" type="{{ mediaItem.media.mimeType }}">
+                      </video>
+                    </div>
+                  </div>
+                {% endblock %}
+              {% else %}
+                {% block solid_pv_gallery_slider_image_image %}
+                  {% sw_thumbnails 'gallery-slider-image-thumbnails' with {
+                    media: (isProduct or isMappedToProductMedia ? mediaItem.media : mediaItem)
+                  } %}
+                {% endblock %}
+              {% endif %}
+            {% endblock %}
+          </div>
+        </div>
+      {% endblock %}
+    {% endfor %}
+  {% endblock %}
+{% endblock %}
+
+{% block element_image_gallery_inner_single %}
+  {% set isMappedToProductMedia = element.config.sliderItems.source == 'mapped' and element.config.sliderItems.value == 'product.media' %}
+  {% set mediaItems = isProduct or isMappedToProductMedia ? page.product.media : mediaItems %}
+  {% set mediaItem = mediaItems|first %}
+  {% set imageCount = mediaItems|length %}
+
+  {% block solid_pv_element_image_gallery_inner_single %}
+    {% if (isProduct or isMappedToProductMedia) and ((mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) or mediaItem.media.mimeType | split('/')[0] == 'video') %}
+      {% set isVideo = true %}
+    {% endif %}
+
+    <div class="gallery-slider-single-image is-{{ displayMode }} {% if isVideo %}is-video{% else %}js-magnifier-container{% endif %}"{% if minHeight %} style="min-height: {{ minHeight }}"{% endif %}>
+      {% if imageCount > 0 %}
+        {% set attributes = {
+          'class': 'img-fluid gallery-slider-image' ~ (isVideo ?: ' magnifier-image js-magnifier-image'),
+          'alt': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.alt ?: fallbackImageTitle) : (mediaItem.translated.alt ?: fallbackImageTitle)),
+          'title': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.title ?: fallbackImageTitle) : (mediaItem.translated.title ?: fallbackImageTitle)),
+          'data-full-image': (isVideo ?: (isProduct or isMappedToProductMedia ? mediaItem.media.url : mediaItem.url))
+        } %}
+
+        {% if displayMode == 'cover' or displayMode == 'contain' %}
+          {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
+        {% endif %}
+
+        {% if (isProduct or isMappedToProductMedia) and not isVideo %}
+          {% set attributes = attributes|merge({ 'itemprop': 'image' }) %}
+        {% endif %}
+
+        {% block solid_pv_gallery_slider_image_single_conditions %}
+          {% if (isProduct or isMappedToProductMedia) and (mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) %}
+            {% if mediaItem.customFields.pv_source == 'youtube' %}
+              {% block solid_pv_gallery_slider_image_single_youtube %}
+                {% set video_id = mediaItem.customFields.pv_url | split('v=') | last %}
+
+                {% if video_id %}
+                  <div class="solid-pv-container">
+                    <div class="solid-pv-item">
+                      <iframe
+                        class="youtube"
+                        src="https://www.youtube-nocookie.com/embed/{{ video_id }}?disablekb=1&color=white&enablejsapi=1&loop=1&playlist={{ video_id }}"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        title="YouTube">
+                      </iframe>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endblock %}
+            {% elseif mediaItem.customFields.pv_source == 'vimeo' %}
+              {% block solid_pv_gallery_slider_image_single_vimeo %}
+                {% set video_id = mediaItem.customFields.pv_url | split('vimeo.com/') | last %}
+
+                {% if video_id %}
+                  <div class="solid-pv-container">
+                    <div class="solid-pv-item">
+                      <iframe
+                        class="vimeo"
+                        src="https://player.vimeo.com/video/{{ video_id }}?color=ffffff&title=0&byline=0&portrait=0&dnt=1&loop=1"
+                        allow="autoplay; fullscreen"
+                        title="Vimeo">
+                      </iframe>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endblock %}
+            {% endif %}
+          {% elseif (isProduct or isMappedToProductMedia) and mediaItem.media.mimeType | split('/')[0] == 'video' %}
+            {% block solid_pv_gallery_slider_image_single_video %}
+              <div class="solid-pv-container">
+                <div class="solid-pv-item">
+                  <video controls preload="none" loop>
+                    <source src="{{ mediaItem.media.url }}" type="{{ mediaItem.media.mimeType }}">
+                  </video>
+                </div>
+              </div>
+            {% endblock %}
+          {% else %}
+            {% block solid_pv_gallery_slider_image_single_image %}
+              {% sw_thumbnails 'gallery-slider-image-thumbnails' with {
+                media: (isProduct or isMappedToProductMedia ? mediaItem.media : mediaItem)
+              } %}
+            {% endblock %}
+          {% endif %}
+        {% endblock %}
+      {% else %}
+        {% sw_icon 'placeholder' style {
+          'size': 'fluid'
+        } %}
+      {% endif %}
+    </div>
+  {% endblock %}
+{% endblock %}
+
+{% block element_image_gallery_inner_thumbnails_items %}
+  {% set isMappedToProductMedia = element.config.sliderItems.source == 'mapped' and element.config.sliderItems.value == 'product.media' %}
+  {% set mediaItems = isProduct or isMappedToProductMedia ? page.product.media : mediaItems %}
+
+  {% block solid_pv_element_image_gallery_inner_thumbnails_items %}
+    {% for mediaItem in mediaItems %}
+      {% block element_image_gallery_inner_thumbnails_item %}
+        <div class="gallery-slider-thumbnails-item">
+          {% block element_image_gallery_inner_thumbnails_item_inner %}
+            <div class="gallery-slider-thumbnails-item-inner">
+              {% set attributes = {
+                'class': 'gallery-slider-thumbnails-image',
+                'alt': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.alt ?: fallbackImageTitle) : (mediaItem.translated.alt ?: fallbackImageTitle)),
+                'title': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.title ?: fallbackImageTitle) : (mediaItem.translated.title ?: fallbackImageTitle))
+              } %}
+
+              {% if (isProduct or isMappedToProductMedia) and not isVideo %}
+                {% set attributes = attributes|merge({ 'itemprop': 'image' }) %}
+              {% endif %}
+
+              {% block solid_pv_gallery_slider_thumbnail_conditions %}
+                {% if (isProduct or isMappedToProductMedia) and mediaItem.media.mimeType | split('/')[0] == 'video' %}
+                  {% block solid_pv_gallery_slider_thumbnail_video %}
+                    <div class="solid-pv-item">
+                      <video preload="none">
+                        <source src="{{ mediaItem.media.url }}" type="{{ mediaItem.media.mimeType }}">
+                      </video>
+                      <div class="solid-pv-icon">
+                        {% sw_icon 'multicolor-action-play' style {
+                          'namespace': 'SolidProductVideos'
+                        } %}
+                      </div>
+                    </div>
+                  {% endblock %}
+                {% else %}
+                  {% block solid_pv_gallery_slider_thumbnail_image %}
+                    {% sw_thumbnails 'gallery-slider-thumbnails-image-thumbnails' with {
+                      media: (isProduct or isMappedToProductMedia ? mediaItem.media : mediaItem),
+                      sizes: {
+                        'default': '200px'
+                      }
+                    } %}
+
+                    {% block solid_pv_gallery_slider_thumbnail_icon %}
+                      {% if (isProduct or isMappedToProductMedia) and (mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) %}
+                        <div class="solid-pv-icon">
+                          {% sw_icon 'multicolor-action-play' style {
+                            'namespace': 'SolidProductVideos'
+                          } %}
+                        </div>
+                      {% endif %}
+                    {% endblock %}
+                  {% endblock %}
+                {% endif %}
+              {% endblock %}
+            </div>
+          {% endblock %}
+        </div>
+      {% endblock %}
+    {% endfor %}
+  {% endblock %}
+{% endblock %}
+
+{% block element_image_gallery_inner_zoom_modal_slider_items %}
+  {% set isMappedToProductMedia = element.config.sliderItems.source == 'mapped' and element.config.sliderItems.value == 'product.media' %}
+  {% set mediaItems = isProduct or isMappedToProductMedia ? page.product.media : mediaItems %}
+
+  {% block solid_pv_element_image_gallery_inner_zoom_modal_slider_items %}
+    {% for mediaItem in mediaItems %}
+      {% block element_image_gallery_inner_zoom_modal_slider_item %}
+        <div class="gallery-slider-item">
+          {% block element_image_gallery_inner_zoom_modal_slider_item_zoom_container %}
+            {% block element_image_gallery_inner_zoom_modal_slider_item_image %}
+              {% block solid_pv_gallery_slider_zoom_modal_image_conditions %}
+                {% if (isProduct or isMappedToProductMedia) and (mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) %}
+                  {% if mediaItem.customFields.pv_source == 'youtube' %}
+                    {% block solid_pv_gallery_slider_zoom_modal_image_youtube %}
+                      {% set video_id = mediaItem.customFields.pv_url | split('v=') | last %}
+
+                      {% if video_id %}
+                        <div class="solid-pv-container">
+                          <div class="solid-pv-item">
+                            <iframe
+                              class="youtube"
+                              src="https://www.youtube-nocookie.com/embed/{{ video_id }}?disablekb=1&color=white&enablejsapi=1&loop=1&playlist={{ video_id }}"
+                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                              title="YouTube">
+                            </iframe>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endblock %}
+                  {% elseif mediaItem.customFields.pv_source == 'vimeo' %}
+                    {% block solid_pv_gallery_slider_zoom_modal_image_vimeo %}
+                      {% set video_id = mediaItem.customFields.pv_url | split('vimeo.com/') | last %}
+
+                      {% if video_id %}
+                        <div class="solid-pv-container">
+                          <div class="solid-pv-item">
+                            <iframe
+                              class="vimeo"
+                              src="https://player.vimeo.com/video/{{ video_id }}?color=ffffff&title=0&byline=0&portrait=0&dnt=1&loop=1"
+                              allow="autoplay; fullscreen"
+                              title="Vimeo">
+                            </iframe>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endblock %}
+                  {% endif %}
+                {% elseif (isProduct or isMappedToProductMedia) and mediaItem.media.mimeType | split('/')[0] == 'video' %}
+                  {% block solid_pv_gallery_slider_zoom_modal_image_video %}
+                    <div class="solid-pv-container">
+                      <div class="solid-pv-item">
+                        <video controls preload="none" loop>
+                          <source src="{{ mediaItem.media.url }}" type="{{ mediaItem.media.mimeType }}">
+                        </video>
+                      </div>
+                    </div>
+                  {% endblock %}
+                {% else %}
+                  <div class="image-zoom-container"
+                    data-image-zoom="true">
+                    {% block solid_pv_gallery_slider_zoom_modal_image_image %}
+                      {% sw_thumbnails 'gallery-slider-image-thumbnails' with {
+                        media: (isProduct or isMappedToProductMedia ? mediaItem.media : mediaItem),
+                        attributes: {
+                        'class': 'gallery-slider-image js-image-zoom-element',
+                        'alt': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.alt ?: fallbackImageTitle) : (mediaItem.translated.alt ?: fallbackImageTitle)),
+                        'title': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.title ?: fallbackImageTitle) : (mediaItem.translated.title ?: fallbackImageTitle))
+                        }
+                      } %}
+                    {% endblock %}
+                  </div>
+                {% endif %}
+              {% endblock %}
+            {% endblock %}
+          {% endblock %}
+        </div>
+      {% endblock %}
+    {% endfor %}
+  {% endblock %}
+{% endblock %}
+
+{% block element_image_gallery_inner_zoom_modal_thumbnails_items %}
+  {% set isMappedToProductMedia = element.config.sliderItems.source == 'mapped' and element.config.sliderItems.value == 'product.media' %}
+  {% set mediaItems = isProduct or isMappedToProductMedia ? page.product.media : mediaItems %}
+
+  {% block solid_pv_element_image_gallery_inner_zoom_modal_thumbnails_items %}
+    {% for mediaItem in mediaItems %}
+      {% block element_image_gallery_inner_zoom_modal_thumbnails_item %}
+        <div class="gallery-slider-thumbnails-item {% if (isProduct or isMappedToProductMedia) and mediaItem.media.mimeType | split('/')[0] == 'video' %}is-video{% endif %}">
+          {% block element_image_gallery_inner_zoom_modal_thumbnails_item_inner %}
+            <div class="gallery-slider-thumbnails-item-inner">
+              {% block solid_pv_gallery_slider_zoom_modal_thumbnail_conditions %}
+                {% if (isProduct or isMappedToProductMedia) and mediaItem.media.mimeType | split('/')[0] == 'video' %}
+                  {% block solid_pv_gallery_slider_zoom_modal_thumbnail_video %}
+                    <div class="solid-pv-item">
+                      <video preload="none">
+                        <source src="{{ mediaItem.media.url }}" type="{{ mediaItem.media.mimeType }}">
+                      </video>
+                      <div class="solid-pv-icon">
+                        {% sw_icon 'multicolor-action-play' style {
+                          'namespace': 'SolidProductVideos'
+                        } %}
+                      </div>
+                    </div>
+                  {% endblock %}
+                {% else %}
+                  {% block solid_pv_gallery_slider_zoom_modal_thumbnail_image %}
+                    {% sw_thumbnails 'gallery-slider-thumbnails-image-thumbnails' with {
+                      media: (isProduct or isMappedToProductMedia ? mediaItem.media : mediaItem),
+                      sizes: {
+                        'default': '200px'
+                      },
+                      attributes: {
+                        'class': 'gallery-slider-thumbnails-image',
+                        'alt': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.alt ?: fallbackImageTitle) : (mediaItem.translated.alt ?: fallbackImageTitle)),
+                        'title': (isProduct or isMappedToProductMedia ? (mediaItem.media.translated.title ?: fallbackImageTitle) : (mediaItem.translated.title ?: fallbackImageTitle))
+                      }
+                    } %}
+
+                    {% block solid_pv_gallery_slider_zoom_modal_thumbnail_icon %}
+                      {% if (isProduct or isMappedToProductMedia) and (mediaItem.customFields and mediaItem.customFields.pv_is_embedded_video) %}
+                        <div class="solid-pv-icon">
+                          {% sw_icon 'multicolor-action-play' style {
+                            'namespace': 'SolidProductVideos'
+                          } %}
+                        </div>
+                      {% endif %}
+                    {% endblock %}
+                  {% endblock %}
+                {% endif %}
+              {% endblock %}
+            </div>
+          {% endblock %}
+        </div>
+      {% endblock %}
+    {% endfor %}
+  {% endblock %}
+{% endblock %}

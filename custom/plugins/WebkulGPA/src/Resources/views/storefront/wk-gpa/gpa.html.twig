@@ -1,0 +1,410 @@
+{% block wk_google_pin_address %}
+    <script type="text/javascript">
+        var homeUrl = "{{ url('frontend.home.page') }}";
+        var currentUrl = window.location.href;
+        
+        function initMap(){
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var map;
+                var shippingMap;
+                var shippingMapCreate;
+                var marker;
+                var shippingMarker;
+                var shippingMarkerCreate;
+                var latlang = new google.maps.LatLng(lat, lng);
+                var geocoder = new google.maps.Geocoder();
+                var infowindow = new google.maps.InfoWindow();
+                var mapOptions = {
+                zoom: 16,
+                center: latlang,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                if (document.getElementById("map")) {
+                    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                }
+
+                if (document.getElementById("shipping-map")) {
+                    shippingMap = new google.maps.Map(document.getElementById("shipping-map"), mapOptions);
+                }
+
+                if (document.getElementById("shipping-map-create")) {
+                    shippingMapCreate = new google.maps.Map(document.getElementById("shipping-map-create"), mapOptions);
+                }
+
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: latlang,
+                    draggable: true
+                });
+
+                shippingMarker = new google.maps.Marker({
+                    map: shippingMap,
+                    position: latlang,
+                    draggable: true
+                });
+
+                shippingMarkerCreate = new google.maps.Marker({
+                    map: shippingMapCreate,
+                    position: latlang,
+                    draggable: true
+                });
+
+                geocoder = new google.maps.Geocoder();
+                
+                geocoder.geocode({'latLng': latlang }, function(results, status) {
+                    if (status == 'OK') {
+                        if (results[0]) {
+                            var address_components = results[0].address_components;
+                            var components={};
+                            jQuery.each(address_components, function(k,v1) {
+                                jQuery.each(v1.types, 
+                                function(k2, v2) {
+                                    components[v2]=v1.long_name
+                                });
+                            });
+                            var address = false;
+                            var city;
+                            var postal_code;
+                            var state;
+                            var country;
+
+                            if(results[0].formatted_address) {
+                                address = results[0].formatted_address;
+                            }
+
+                            if(components.locality) {
+                                city = components.locality;
+                            }
+
+                            if(!city) {
+                                city = components.administrative_area_level_1;
+                            }
+
+                            if(components.postal_code) {
+                                postal_code = components.postal_code;
+                            }
+                            
+                            if(components.administrative_area_level_1) {
+                                state = components.administrative_area_level_1;
+                            }
+
+                            if(components.country) {
+                                country = components.country;
+                            }
+                            
+                            if (currentUrl == homeUrl+'account/login' || currentUrl == homeUrl+'checkout/register') {
+                                $('#billingAddressAddressZipcode').val(postal_code);
+                                $('#billingAddressAddressCity').val(city);
+                                $('#billingAddressAddressStreet').val(address);
+
+                                $('#shippingAddressAddressZipcode').val(postal_code);
+                                $('#shippingAddressAddressCity').val(city);
+                                $('#shippingAddressAddressStreet').val(address);
+
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                        $('#billingAddressAddressCountry').val(countryId);
+                                        $('#shippingAddressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            } else {
+                                $('#addressAddressZipcode').val(postal_code);
+                                $('#addressAddressCity').val(city);
+                                $('#addressAddressStreet').val(address);
+                                $('#address-create-new #addressAddressZipcode').val(postal_code);
+                                $('#address-create-new #addressAddressCity').val(city);
+                                $('#address-create-new #addressAddressStreet').val(address);
+                               
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                        $('#addressAddressCountry').val(countryId);
+                                        $('#address-create-new #addressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            }
+                            
+                            
+                            
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(map, marker);
+                            infowindow.open(shippingMap, shippingMarker);
+                            infowindow.open(shippingMapCreate, shippingMarkerCreate);
+                        }
+                    }
+                });
+
+                google.maps.event.addListener(marker, 'dragend', function() {
+                    geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[0]) {
+                            var address_components = results[0].address_components;
+                            var components={};
+                            jQuery.each(address_components, function(k,v1) {jQuery.each(v1.types, function(k2, v2){components[v2]=v1.long_name});});
+                            var address = false;
+                            var city;
+                            var postal_code;
+                            var state;
+                            var country;
+
+                            if(results[0].formatted_address) {
+                                address = results[0].formatted_address;
+                            }
+
+                            if(components.locality) {
+                                city = components.locality;
+                            }
+
+                            if(!city) {
+                                city = components.administrative_area_level_1;
+                            }
+
+                            if(components.postal_code) {
+                                postal_code = components.postal_code;
+                            }
+
+                            if(components.administrative_area_level_1) {
+                                state = components.administrative_area_level_1;
+                            }
+
+                            if(components.country) {
+                                country = components.country;
+                            }
+                            
+                            if (currentUrl == homeUrl+'account/login' || currentUrl == homeUrl+'checkout/register') {
+                                $('#billingAddressAddressZipcode').val(postal_code);
+                                $('#billingAddressAddressCity').val(city);
+                                $('#billingAddressAddressStreet').val(address);
+
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                        $('#billingAddressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            } else {
+                                $('#addressAddressZipcode').val(postal_code);
+                                $('#addressAddressCity').val(city);
+                                $('#addressAddressStreet').val(address);
+                                                              
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                        $('#addressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            }
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(map, marker);
+                            }
+                        }
+                    });
+                });
+
+                google.maps.event.addListener(shippingMarker, 'dragend', function() {
+                    geocoder.geocode({'latLng': shippingMarker.getPosition()}, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[0]) {
+                            var address_components = results[0].address_components;
+                            var components={};
+                            jQuery.each(address_components, function(k,v1) {jQuery.each(v1.types, function(k2, v2){components[v2]=v1.long_name});});
+                            var address = false;
+                            var city;
+                            var postal_code;
+                            var state;
+                            var country;
+
+                            if(results[0].formatted_address) {
+                                address = results[0].formatted_address;
+                            }
+
+                            if(components.locality) {
+                                city = components.locality;
+                            }
+
+                            if(!city) {
+                                city = components.administrative_area_level_1;
+                            }
+
+                            if(components.postal_code) {
+                                postal_code = components.postal_code;
+                            }
+
+                            if(components.administrative_area_level_1) {
+                                state = components.administrative_area_level_1;
+                            }
+
+                            if(components.country) {
+                                country = components.country;
+                            }
+                            
+                            if (currentUrl == homeUrl+'account/login' || currentUrl == homeUrl+'checkout/register') {
+                                $('#shippingAddressAddressZipcode').val(postal_code);
+                                $('#shippingAddressAddressCity').val(city);
+                                $('#shippingAddressAddressStreet').val(address);
+
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                    $('#shippingAddressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            } else {
+                                $('#addressAddressZipcode').val(postal_code);
+                                $('#addressAddressCity').val(city);
+                                $('#addressAddressStreet').val(address);
+                                
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                        $('#addressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            }
+                            
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(shippingMap, shippingMarker);
+                            }
+                        }
+                    });
+                });
+
+                google.maps.event.addListener(shippingMarkerCreate, 'dragend', function() {
+                    geocoder.geocode({'latLng': shippingMarkerCreate.getPosition()}, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[0]) {
+                            var address_components = results[0].address_components;
+                            var components={};
+                            jQuery.each(address_components, function(k,v1) {jQuery.each(v1.types, function(k2, v2){components[v2]=v1.long_name});});
+                            var address = false;
+                            var city;
+                            var postal_code;
+                            var state;
+                            var country;
+
+                            if(results[0].formatted_address) {
+                                address = results[0].formatted_address;
+                            }
+
+                            if(components.locality) {
+                                city = components.locality;
+                            }
+
+                            if(!city) {
+                                city = components.administrative_area_level_1;
+                            }
+
+                            if(components.postal_code) {
+                                postal_code = components.postal_code;
+                            }
+
+                            if(components.administrative_area_level_1) {
+                                state = components.administrative_area_level_1;
+                            }
+
+                            if(components.country) {
+                                country = components.country;
+                            }
+                            
+                            if (currentUrl == homeUrl+'account/login' || currentUrl == homeUrl+'checkout/register') {
+                                $('#shippingAddressAddressZipcode').val(postal_code);
+                                $('#shippingAddressAddressCity').val(city);
+                                $('#shippingAddressAddressStreet').val(address);
+
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                    $('#shippingAddressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            } else {
+                                $('#address-create-new #addressAddressZipcode').val(postal_code);
+                                $('#address-create-new #addressAddressCity').val(city);
+                                $('#address-create-new #addressAddressStreet').val(address);
+                                
+                                var xhr = new XMLHttpRequest();
+                                var formData = new FormData();
+                                formData.append('country', country);
+                                formData.append('state', state);
+                                xhr.open("POST", homeUrl+"/gpa/mapped/country");
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status === 200) {
+                                        var response = JSON.parse(xhr.response);
+                                        var countryId = response['countryId'];
+                                        var stateId = response['stateId'];
+                                        $('#address-create-new #addressAddressCountry').val(countryId);
+                                    }
+                                };
+                                xhr.send(formData);
+                            }
+                            
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(shippingMapCreate, shippingMarkerCreate);
+                            }
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+{% endblock %}

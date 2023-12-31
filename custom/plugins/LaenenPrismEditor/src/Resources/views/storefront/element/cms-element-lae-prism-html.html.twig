@@ -1,0 +1,7 @@
+{% block element_lae_prism_html %}
+    {% set config = element.fieldConfig.elements %}
+
+    <div class="cms-element-{{ element.type }}">
+        {{ config.content.value|raw }}
+    </div>
+{% endblock %}

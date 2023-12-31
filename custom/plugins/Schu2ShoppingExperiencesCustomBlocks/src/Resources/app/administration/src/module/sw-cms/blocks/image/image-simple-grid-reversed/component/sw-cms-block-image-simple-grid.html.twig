@@ -1,0 +1,13 @@
+{% block sw_cms_block_image_simple_grid %}
+    <div class="sw-cms-block-image-simple-grid">
+        <slot name="left"></slot>
+        <div class="sw-cms-block-image-simple-grid__side-images">
+            <div class="sw-cms-block-image-simple-grid__image-top">
+                <slot name="right-top"></slot>
+            </div>
+            <div class="sw-cms-block-image-simple-grid__image-bottom">
+                <slot name="right-bottom"></slot>
+            </div>
+        </div>
+    </div>
+{% endblock %}

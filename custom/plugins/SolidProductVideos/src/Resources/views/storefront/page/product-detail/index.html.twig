@@ -1,0 +1,48 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block page_product_detail_content %}
+  {% block pv_product_detail_content %}
+    <div class="product-detail-content">
+      {% block page_product_detail_breadcrumb %}
+        {{ parent() }}
+      {% endblock %}
+      {% block page_product_detail_headline %}
+        {{ parent() }}
+      {% endblock %}
+
+      {% set mediaItems = page.product.media %}
+
+      {% block page_product_detail_main %}
+        <div class="row product-detail-main">
+          {% block page_product_detail_media %}
+            {% block pv_product_detail_media %}
+              <div class="col-lg-7 product-detail-media">
+                {% if page.product.media %}
+                  {% sw_include '@Storefront/storefront/element/cms-element-image-gallery-pv.html.twig' with {
+                    'mediaItems': mediaItems,
+                    'zoom': true,
+                    'zoomModal': true,
+                    'displayMode': 'contain',
+                    'gutter': 5,
+                    'minHeight': '430px',
+                    'navigationArrows': 'inside',
+                    'navigationDots': 'inside',
+                    'galleryPosition': 'left',
+                    'isProduct': true,
+                    'fallbackImageTitle': page.product.translated.name,
+                    'startIndexThumbnails': page.product.cover.position + 1,
+                    'startIndexSlider': page.product.cover.position + 1
+                  } %}
+                {% endif %}
+              </div>
+            {% endblock %}
+          {% endblock %}
+
+          {% block page_product_detail_buy %}
+            {{ parent() }}
+          {% endblock %}
+        </div>
+      {% endblock %}
+    </div>
+  {% endblock %}
+{% endblock %}

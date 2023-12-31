@@ -1,0 +1,57 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-cross-selling.html.twig' %}
+
+{% block cms_element_cross_selling_tabs_inner %}
+    <div class="card card-tabs cross-selling-plugin-block" data-cross-selling="true">
+        {% if element.data.crossSellings.elements is defined %}
+            {% for item in element.data.crossSellings.elements|filter(item => item.total > 0 and item.crossSelling.active == true) %}
+                {% set crossSelling = item.crossSelling %}
+                {% set products = item.products %}
+                {% set id = crossSelling.id %}
+                <div class="cross-selling-entry" style="margin-bottom: 1.5rem">
+                    {% set config = {
+                        'title': {
+                            'value': crossSelling.name
+                        },
+                        'border': {
+                            'value': false
+                        },
+                        'rotate': {
+                            'value': false
+                        },
+                        'products': {
+                            'value': products
+                        },
+                        'boxLayout': {
+                            'value': 'standard'
+                        },
+                        'elMinWidth': {
+                            'value': '300px'
+                        },
+                        'navigation': {
+                            'value': true
+                        },
+                        'displayMode': {
+                            'value': 'minimal'
+                        },
+                        'verticalAlign': {
+                            'value': 'top'
+                        },
+                    } %}
+
+                    {% block cms_element_cross_selling_tabs_content_container_slider %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-product-slider.html.twig" with {
+                            sliderConfig: config,
+                            element: {
+                                'data': {
+                                    'products': products
+                                },
+                                type: 'product-slider'
+                            }
+                        } %}
+                    {% endblock %}
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

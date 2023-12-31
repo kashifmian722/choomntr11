@@ -1,0 +1,17 @@
+.sw-cms-block-image-text-row-six {
+    display: grid;
+    //grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-content: stretch;
+    align-items: start;
+    grid-gap: 5px;
+
+    .sw-cms-el-text {
+        padding-top: 20px;
+    }
+
+    .sw-cms-el-image.is--cover {
+        min-height: 200px;
+    }
+}
+

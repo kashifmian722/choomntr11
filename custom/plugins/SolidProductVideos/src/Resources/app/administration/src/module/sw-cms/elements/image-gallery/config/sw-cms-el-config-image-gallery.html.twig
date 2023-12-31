@@ -1,0 +1,12 @@
+{% block sw_cms_element_image_gallery_config_media_preview_item %}
+  <div v-for="demo in demoValue"
+    class="sw-cms-el-config-image-gallery__preview-image"
+    :key="demo.id">
+    <sw-media-preview-v2
+      :source="demo.media" />
+    <div class="embedded-video-icon"
+      v-if="demo.customFields && demo.customFields.pv_is_embedded_video">
+      <sw-icon name="multicolor-action-play" color="#479ef8" />
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{
+    "custom": {
+        "sw-cms": {
+            "blocks": {
+                "image": {
+                    "imageSimpleGrid": {
+                        "label": "Image grid reversed"
+                    }
+                },
+                "text": {
+                    "textFourColumn": {
+                        "label": "Four columns, text"
+                    },
+                    "textFiveColumn": {
+                        "label": "Five columns, text"
+                    },
+                    "textSixColumn": {
+                        "label": "Six columns, text"
+                    }
+                },
+                "textImage": {
+                    "imageText": {
+                        "label": "Two columns, boxed image & text reversed"
+                    },
+                    "imageTextCoverReversed": {
+                        "label": "Two columns, full-sized image & text reversed"
+                    },
+                    "imageTextRowTwo": {
+                        "label": "Two columns, captioned images"
+                    },
+                    "imageTextRowFour": {
+                        "label": "Four columns, captioned images"
+                    },
+                    "imageTextRowFive": {
+                        "label": "Five columns, captioned images"
+                    },
+                    "imageTextRowSix": {
+                        "label": "Six columns, captioned images"
+                    },
+                    "imageTextBubbleTwo": {
+                        "label": "Two columns, captioned & rounded"
+                    },
+                    "imageTextBubbleFour": {
+                        "label": "Four columns, captioned & rounded"
+                    },
+                    "imageTextBubbleFive": {
+                        "label": "Five columns, captioned & rounded"
+                    },
+                    "imageTextBubbleSix": {
+                        "label": "Six columns, captioned & rounded"
+                    },
+                    "imageTextGalleryTwo": {
+                        "label": "Two columns, captioned images"
+                    },
+                    "imageTextGalleryFour": {
+                        "label": "Four columns, captioned images"
+                    },
+                    "imageTextGalleryFive": {
+                        "label": "Five columns, captioned images"
+                    },
+                    "imageTextGallerySix": {
+                        "label": "Six columns, captioned images"
+                    }
+                }
+            }
+        }
+    }
+}

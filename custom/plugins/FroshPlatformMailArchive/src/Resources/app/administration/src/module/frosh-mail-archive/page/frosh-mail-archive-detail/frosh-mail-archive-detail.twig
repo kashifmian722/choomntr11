@@ -1,0 +1,34 @@
+<sw-page class="frosh-mail-archive-detail">
+    <template slot="smart-bar-header">
+        <h2 v-if="archive">{{ archive.subject }}</h2>
+    </template>
+
+    <template slot="smart-bar-actions">
+        <sw-button variant="ghost" v-if="archive && archive.customer" @click="openCustomer">
+            {{ $tc('frosh-mail-archive.detail.toolbar.customer') }}
+        </sw-button>
+
+        <sw-button-process :isLoading="isLoading" :processSuccess="isSuccessful" @click="resendMail">
+            {{ $tc('frosh-mail-archive.detail.toolbar.resend') }}
+        </sw-button-process>
+    </template>
+
+    <template slot="content">
+        <sw-card-view v-if="archive">
+            <sw-card :title="$tc('frosh-mail-archive.detail.metadata.title')">
+                <sw-text-field :label="$tc('frosh-mail-archive.detail.metadata.sentDate')" :disabled="true" v-model="createdAtDate"></sw-text-field>
+                <sw-text-field :label="$tc('frosh-mail-archive.detail.metadata.sender')" :disabled="true" v-model="senderText"></sw-text-field>
+                <sw-text-field :label="$tc('frosh-mail-archive.detail.metadata.receiver')" :disabled="true" v-model="receiverText"></sw-text-field>
+                <sw-text-field :label="$tc('frosh-mail-archive.detail.metadata.subject')" :disabled="true" v-model="archive.subject"></sw-text-field>
+                <sw-text-field :label="$tc('frosh-mail-archive.detail.metadata.salesChannel')" v-if="archive.salesChannel" :disabled="true" v-model="archive.salesChannel.name"></sw-text-field>
+            </sw-card>
+            <sw-card :title="$tc('frosh-mail-archive.detail.content.title')">
+                <h4>HTML</h4>
+                <iframe :src="htmlText" sandbox frameborder="0"></iframe>
+                <h4>Plain</h4>
+
+                <iframe :src="plainText" sandbox frameborder="0"></iframe>
+            </sw-card>
+        </sw-card-view>
+    </template>
+</sw-page>

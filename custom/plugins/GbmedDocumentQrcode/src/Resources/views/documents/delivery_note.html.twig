@@ -1,0 +1,46 @@
+{% sw_extends '@Framework/documents/delivery_note.html.twig' %}
+
+
+{% block document_head %}
+    {{ parent() }}
+
+    {% block document_line_item_table_row_product_number_GbmedDocumentQrcode %}
+        {% sw_include '@Framework/documents/components/style.html.twig' %}
+    {% endblock %}
+
+{% endblock %}
+
+{# QR-Code below of article label #}
+{% block document_line_item_table_row_label %}
+    <td class="line-item-breakable">
+        {{ lineItem.label }}
+
+        {% block document_line_item_table_row_label_GbmedDocumentQrcode %}
+            {% sw_include '@Framework/documents/components/table_row_label.html.twig' %}
+        {% endblock %}
+    </td>
+{% endblock %}
+
+{# on the left side#}
+{% block document_line_item_table_head %}
+    {% block document_line_item_table_head_GbmedDocumentQrcode %}
+        {% sw_include '@Framework/documents/components/table_head.html.twig' %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}
+{% block document_line_item_table_rows %}
+    {% block document_line_item_table_rows_GbmedDocumentQrcode %}
+        {% sw_include '@Framework/documents/components/table_rows.html.twig' %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block document_line_item_table_shipping_position %}
+    {% block document_line_item_table_shipping_position_GbmedDocumentQrcode %}
+        {% sw_include '@Framework/documents/components/shipping_position.html.twig' %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}

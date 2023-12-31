@@ -1,0 +1,10 @@
+{% block document_components_GbmedDocumentQrcode_table_rows %}
+    {% if extensions.GbmedDocumentQrcode.qrCodeLayout == 0 %}
+        <td class="GbmedDocumentQrcode">
+            {% if lineItem.extensions.GbmedDocumentQrcode.image %}
+                <img src="{{ lineItem.extensions.GbmedDocumentQrcode.image }}" class="GbmedDocumentQrcode"/>
+            {% endif %}
+            &nbsp;
+        </td>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+.sw-cms-el-config-image-gallery {
+  &__preview-image {
+    position: relative;
+  }
+
+  .embedded-video-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .sw-icon {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}

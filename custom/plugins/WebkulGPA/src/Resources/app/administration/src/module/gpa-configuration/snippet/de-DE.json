@@ -1,0 +1,30 @@
+{
+    "gpa": {
+        "general": {
+            "subMenuItemGeneral": "Aufbau",
+            "mainMenuItemGeneral": "Google Pin-Adresse"
+        },
+        "config": {
+            "errorTitle": "Error",
+            "errorGoogleApiKey": "Geben Sie den Google Api-Schlüssel ein",
+            "errorLatitude": "Geben Sie Ihren Breitengrad ein",
+            "errorLongitude": "Geben Sie Ihre Länge ein",
+            "successTitle": "Erfolg",
+            "successMessage": "Konfiguration wird gespeichert",
+            "saveButtonText": "speichern",
+            "cardTitleGeneral": "Allgemeine Einstellung",
+            "labelGoogleApiKey": "Google API-Schlüssel",
+            "placeholderGoogleApiKey": "Geben Sie den Google API-Schlüssel ein",
+            "labelLatitude": "Geben Sie Ihren Breitengrad ein",
+            "placeholderLatitude": "Geben Sie Ihren Breitengrad ein",
+            "labelLongitude": "Geben Sie Ihre Länge ein",
+            "placeholderLongitude": "Geben Sie Ihre Länge ein",
+            "helpTextLongitude": "Der Längengrad wird als Standardadresse für die Anzeige auf Google Maps verwendet",
+            "helpTextLatitude": "Latitude wird als Standardadresse für die Anzeige auf Google Maps verwendet",
+            "labelGoogleApiKeyLink": "Für Google Api Schlüssel",
+            "googleApiKeyLink": "https://developers.google.com/maps/documentation/javascript/get-api-key",
+            "labelLatitudeLongitudeLink": "Für Breite und Länge",
+            "latitudeLongitudeLink": "https://www.latlong.net/"
+        }
+    }
+}

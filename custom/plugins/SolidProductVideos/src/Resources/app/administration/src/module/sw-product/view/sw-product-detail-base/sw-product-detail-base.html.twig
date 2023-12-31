@@ -1,0 +1,11 @@
+{% block sw_product_detail_base_media_card_form %}
+  <pv-product-media-form
+  v-if="mediaFormVisible"
+  :productId="isInherited ? parentProduct.id : product.id"
+  :key="isInherited"
+  :isInherited="isInherited"
+  :disabled="isInherited"
+  @media-drop="$emit('media-drop', $event)"
+  @cover-change="$emit('cover-change', $event)">
+  </pv-product-media-form>
+{% endblock %}

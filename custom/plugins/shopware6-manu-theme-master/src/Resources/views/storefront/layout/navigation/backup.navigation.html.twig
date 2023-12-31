@@ -1,0 +1,54 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+
+{% block layout_main_navigation_menu %}
+    {% if app.request.attributes.get('_route') == 'storefront.merchant.detail' or app.request.attributes.get('_route') == 'storefront.merchant.detail.category' %}
+        <nav class="nav main-navigation-menu"
+            itemscope="itemscope"
+            itemtype="http://schema.org/SiteNavigationElement">
+            {% block layout_main_navigation_menu_home %}
+                <a class="nav-link main-navigation-link{% if controllerAction is same as('home') %} active{% endif %} home-link"
+                    href="{{ path('frontend.home.page') }}"
+                    itemprop="url"
+                    title="{{ "general.homeLink"|trans|striptags }}">
+                    <div class="main-navigation-link-text">
+                        <span itemprop="name">{{ "general.homeLink"|trans|sw_sanitize }}</span>
+                    </div>
+                </a>
+                {% for treeItem in navigationTree %}
+                    {% set name = treeItem.name %}
+                    {% set categorId = treeItem.id %}
+                    <a class="nav-link main-navigation-link home-link"
+                        href="/merchant/{{ page.merchant.id }}/{{ categorId }}"
+                        itemprop="url"
+                        title="{{ name }}">
+                        <div class="main-navigation-link-text">
+                            <span itemprop="name">{{ name }}</span>
+                        </div>
+                    </a>
+                {% endfor %}    
+            {% endblock %}
+        </nav>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+{# {% block layout_main_navigation_menu_home %}
+    {% if app.request.attributes.get('_route') == 'storefront.merchant.detail' %}
+        <h1>Helo Wrld</h1>
+    {% endif %}
+    <a class="nav-link main-navigation-link{% if controllerAction is same as('home') %} active{% endif %} home-link"
+        href="{{ path('frontend.home.page') }}"
+        itemprop="url"
+        title="{{ "general.homeLink"|trans|striptags }}">
+        <div class="main-navigation-link-text">
+            <span itemprop="name">Hello</span>
+        </div>
+    </a>
+{% endblock %} #}
+
+{% block layout_main_navigation_menu_flyout_wrapper %}
+    {% if shopware.theme['dmf-header-layout'] == 1 %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

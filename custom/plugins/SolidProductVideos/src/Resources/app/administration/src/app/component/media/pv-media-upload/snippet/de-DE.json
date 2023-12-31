@@ -1,0 +1,17 @@
+{
+  "studiosolid-pv": {
+    "pv-media-upload": {
+      "tab-upload": {
+        "title": "Upload"
+      },
+      "tab-embed": {
+        "title": "Video einbetten",
+        "url": "Video Url",
+        "url-help-text": "Bitte verwenden Sie nur Urls, in denen lediglich die Video-ID und keine anderen Eigenschaften vorkommen (z.B. https://www.youtube.com/watch?v=aBc123xYz)",
+        "source": "Video Quelle",
+        "thumbnail": "Vorschaubild",
+        "add": "Zur Liste hinzufügen"
+      }
+    }
+  }
+}

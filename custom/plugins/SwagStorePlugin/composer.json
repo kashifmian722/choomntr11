@@ -1,0 +1,29 @@
+{
+  "name": "swag/qrcode-plugin",
+  "description": "This plugin will create QR code for links.",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Huzaifa Yaseen"
+      }
+  ],
+  "require": {
+      "shopware/core": "*",
+      "shopware/administration": "*",
+      "shopware/storefront": "*",
+      "aferrandini/phpqrcode": "1.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "SwagStorePlugin\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "SwagStorePlugin\\SwagStorePlugin",
+    "label": {
+      "de-DE": "QR Code Plugin",
+      "en-GB": "QR Code Plugin"
+    }
+  }
+}

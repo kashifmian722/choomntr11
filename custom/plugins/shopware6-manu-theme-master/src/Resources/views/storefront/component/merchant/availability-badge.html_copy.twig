@@ -1,0 +1,147 @@
+{% if availability == 1 %}
+    {% set availabilityClass = "normal" %}
+    {% set availabilityDisplayText = "merchantBox.availabilityBadgeOpen"|trans %}
+{% elseif availability == 2 %}
+    {% set availabilityClass = "pick-up" %}
+    {% set availabilityDisplayText = "merchantBox.availabilityBadgePickUp"|trans %}
+{% else %}
+    {% set availabilityClass = "inactive" %}
+    {% set availabilityDisplayText = "merchantBox.availabilityBadgeInactive"|trans %}
+{% endif %}
+
+{% if availabilityText is not empty %}
+    <div class="availability-wrapper">
+        <div class="availability-badge {{ availabilityClass }}">
+            {{ availabilityDisplayText }}
+        </div>
+        <div class="contact-information">
+            <!-- Use Font Awesome 4.7 icon classes -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            {% if page.merchant.publicPhoneNumber %}
+            <span class="contact-info">
+                <i class="fa fa-phone wiggle"></i>
+                <a href="tel:{{ page.merchant.publicPhoneNumber }}" class="contact-information-content phone">{{ page.merchant.publicPhoneNumber }}</a>
+            </span>
+            {% endif %}
+
+            {% if page.merchant.publicEmail %}
+            <span class="contact-info">
+                <i class="fa fa-envelope wiggle"></i>
+                <a href="mailto:{{ page.merchant.publicEmail }}" class="contact-information-content email">{{ page.merchant.publicEmail }}</a>
+            </span>
+            {% endif %}
+        </div>
+        <div class="social-icons">
+            {% if page.merchant.customFields.facebook %}
+            <a href="{{ page.merchant.customFields.facebook }}" class="social-icon fa fa-facebook wiggler fb iconTransition" target="_blank"></a>
+            {% endif %}
+
+            {% if page.merchant.customFields.twitter %}
+            <a href="{{ page.merchant.customFields.twitter }}" class="social-icon fa fa-twitter wiggler tw iconTransition" target="_blank"></a>
+            {% endif %}
+
+            {% if page.merchant.customFields.youtube %}
+            <a href="{{ page.merchant.customFields.youtube }}" class="social-icon fa fa-youtube wiggler yt iconTransition" target="_blank"></a>
+            {% endif %}
+
+            {% if page.merchant.customFields.instagram %}
+            <a href="{{ page.merchant.customFields.instagram }}" class="social-icon fa fa-instagram wiggler dr iconTransition" target="_blank"></a>
+            {% endif %}
+        
+            {% if page.merchant.customFields.tiktok %}
+            <a href="{{ page.merchant.customFields.tiktok }}" class="social-icon fa fa-tiktok wiggler dr iconTransition" target="_blank"></a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+<div class="container">
+    <div class="text-ticker-container">
+        <div class="text-ticker">
+            <div id="ticker">{{ availabilityText }}</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: block;
+    }
+
+    .contact-information {
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-info {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-info .fa {
+        margin-right: 5px;
+    }
+
+    .social-icons {
+        display: flex;
+        flex-wrap: wrap; /* Allow icons to wrap to a new line */
+    }
+
+    .social-icon {
+        margin-right: 10px;
+        margin-bottom: 10px; /* Add margin to create space between icons and allow them to wrap */
+    }
+
+    .text-ticker-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .text-ticker {
+        background: #fff;
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #da3e52;
+        border-radius: 10px;
+        font-size: 50px;
+    }
+
+    #ticker {
+        display: inline-block;
+        animation: ticker-animation 20s linear infinite;
+    }
+
+    @keyframes ticker-animation {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .contact-information,
+        .social-icons {
+            flex-direction: row;
+        }
+
+        .social-icon {
+            margin-right: 5px;
+            margin-bottom: 5px; /* Reduce margin for smaller screens */
+        }
+    }
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap; /* Allow icons to wrap to a new line */
+}
+
+.social-icon {
+    margin-right: 10px;
+    margin-bottom: 10px; /* Add margin to create space between icons and allow them to wrap */
+}
+
+</style>

@@ -1,0 +1,27 @@
+{
+    "name": "laenen/sw6-prism-editor",
+    "description": "Prism Editor plugin",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Rune Laenen"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laenen\\PrismEditor\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Laenen\\PrismEditor\\LaenenPrismEditor",
+        "label": {
+            "de-DE": "Prism Editor plugin",
+            "en-GB": "Prism Editor plugin"
+        }
+    }
+}

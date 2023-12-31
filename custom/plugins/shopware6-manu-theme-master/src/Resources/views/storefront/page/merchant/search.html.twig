@@ -1,0 +1,25 @@
+{% extends '@BrandCrockWanderlust/storefront/base.html.twig' %}
+
+{% block base_content %}
+    {% block page_search %}
+        <div class="cms-page search-page">
+            <div class="search-container">
+                <div class="search-input">
+                    <input type="text" id="search-input" placeholder="Search...">
+                </div>
+                <div class="search-type">
+                    <select id="search-type-select">
+                        <option value="merchant">Search Merchants</option>
+                        <option value="product">Search Products</option>
+                    </select>
+                </div>
+                <div class="search-button">
+                    <button id="search-button">Search</button>
+                </div>
+            </div>
+            <div class="cms-element-product-listing">
+                <!-- Your search results display code here -->
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

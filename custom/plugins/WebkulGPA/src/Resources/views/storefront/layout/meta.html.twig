@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_meta_tags %}
+    {{ parent() }}
+    {% block gpa_jquery %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            var homeUrl = "{{ url('frontend.home.page') }}";
+            (function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", homeUrl+"/gpa/map");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    var response = JSON.parse(xhr.response);
+                    var apiKey = response.googleApiKey;
+                    var head= document.getElementsByTagName('head')[0];
+                    var script = document.createElement('script');
+                    script.src ="https://maps.googleapis.com/maps/api/js?key=" + apiKey  +"&callback=initMap";
+                    head.appendChild(script);
+                }
+            };
+            xhr.send();
+        })();
+        </script>
+    {% endblock %}
+{% endblock %}

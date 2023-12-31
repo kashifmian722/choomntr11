@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/utilities/icon.html.twig' %}
+
+{% block utilities_icon %}
+  {% set styles = [ size, color, rotation, flip, class ] %}
+
+  {% if pack is not defined %}
+    {% set pack = 'default' %}
+  {% endif %}
+
+  {% if namespace is not defined %}
+    {% set namespace = 'Storefront' %}
+  {% endif %}
+
+  <span
+    class="icon icon-{{ name }}{% for entry in styles %}{% if entry != "" %} icon-{{ entry }}{% endif %}{% endfor %}">
+    {% block pv_icons %}
+      {% if pack == 'studiosolid-pv' %}
+        {{ source('@SolidProductVideos/../app/storefront/dist/assets/icon/studiosolid-pv/'~ name ~'.svg', ignore_missing = false) }}
+      {% else %}
+        {{ source('@Storefront/../app/storefront/dist/assets/icon/'~ pack ~'/'~ name ~'.svg', ignore_missing = true) }}
+      {% endif %}
+    {% endblock %}
+  </span>
+{% endblock %}

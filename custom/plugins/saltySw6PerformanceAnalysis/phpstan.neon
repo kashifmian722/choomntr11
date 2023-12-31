@@ -1,0 +1,14 @@
+parameters:
+    level: 8
+
+    paths:
+        - %currentWorkingDirectory%
+    excludes_analyse:
+        - %currentWorkingDirectory%/vendor
+        - %currentWorkingDirectory%/Test/
+
+    ignoreErrors:
+
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    tipsOfTheDay: false

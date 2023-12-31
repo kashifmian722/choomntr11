@@ -1,0 +1,61 @@
+{% sw_extends '@Storefront/storefront/component/address/address-form.html.twig' %}
+
+{% block component_address_form_address_fields %}
+    {% set currentPath = path(app.request.attributes.get('_route'),
+                       app.request.attributes.get('_route_params')) %}
+    {% set path = '/widgets/account/address-book' %}
+    {{ parent() }}
+    {% block gpa_google_pin_address %}
+        {% if prefix == "address" or prefix == "shippingAddress" %}
+            {% if path == currentPath %}
+                {% if data.id == null %}
+                    <div data-toggle="collapse" data-target="#gpa-billing-address" style="cursor:pointer;margin-top:5px;" aria-expanded="false">
+                        <strong> {{"gpa.pinAddressLabel"|trans}} </strong>
+                    </div>
+
+                    <div id="gpa-billing-address" class="register-billing">
+                        <div id="shipping-map-create" style="height:300px;width:100%;margin-bottom:5px;">
+                        </div>
+                    </div>
+                {% else %}
+                    <div data-toggle="collapse" data-target="#gpa-billing-address" style="cursor:pointer;margin-top:5px;" aria-expanded="false">
+                        <strong> {{"gpa.pinAddressLabel"|trans}} </strong>
+                    </div>
+
+                    <div id="gpa-billing-address" class="register-billing">
+                        <div id="shipping-map" style="height:300px;width:100%;margin-bottom:5px;">
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if data == null %}
+                    <div data-toggle="collapse" data-target="#gpa-shipping-address" style="cursor:pointer">
+                        <strong>{{"gpa.pinAddressLabel"|trans}}</strong>
+
+                    </div>
+                    <div id="gpa-shipping-address">
+                        <div id="shipping-map-create" style="height:300px;width:100%;margin-bottom:5px;">
+                        </div>
+                    </div>
+                {% else %}
+                    <div data-toggle="collapse" data-target="#gpa-shipping-address" style="cursor:pointer">
+                        <strong>{{"gpa.pinAddressLabel"|trans}}</strong>
+
+                    </div>
+                    <div id="gpa-shipping-address">
+                        <div id="shipping-map" style="height:300px;width:100%;margin-bottom:5px;">
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <div data-toggle="collapse" data-target="#gpa-billing-address" style="cursor:pointer;margin-top:5px;" aria-expanded="false">
+                <strong> {{"gpa.pinAddressLabel"|trans}}</strong>
+            </div>
+            <div id="gpa-billing-address" class="register-billing">
+                <div id="map" style="height:300px;width:100%;margin-bottom:5px;">
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

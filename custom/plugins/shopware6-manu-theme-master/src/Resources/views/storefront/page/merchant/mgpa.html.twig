@@ -1,0 +1,26 @@
+{% block wk_google_pin_address %}
+    <script type="text/javascript">
+        var homeUrl = "{{ url('frontend.home.page') }}";
+        var currentUrl = window.location.href;
+        function initMap(){
+            var lat = {{ merchant.customfield.latitude }};
+            var lng = {{ merchant.customfield.longitude }};
+            var map;
+            var marker;
+            var latlang = new google.maps.LatLng(lat, lng);
+            var mapOptions = {
+                zoom: 16,
+                center: latlang,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            if (document.getElementById("map")) {
+                map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            }
+            marker = new google.maps.Marker({
+                map: map,
+                position: latlang
+            });
+        }
+    </script>
+{% endblock %}
+  

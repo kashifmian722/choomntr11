@@ -1,0 +1,355 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{# Remove this block, when the template inheritance is fixed #}
+{% block base_header %}
+    <header class="header-main">
+        {% block base_header_inner %}
+            <div class="container">
+                {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+            </div>
+        {% endblock %}
+
+        <div class="nav-main">
+            {% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+        </div>
+
+        {% if context.salesChannel.extensions.organization.disclaimer.active %}
+            <div class="container">
+                <div class="alert alert-success disclaimer">
+                    <strong>{{ context.salesChannel.extensions.organization.disclaimer.text }}</strong>
+                </div>
+            </div>
+        {% endif %}
+    </header>
+{% endblock %}
+
+{# Hide navigation here #}
+{% block base_navigation %}{% endblock %}
+
+{% block base_main_inner %}
+    <div class="row fullsize{% if not page.merchant.publicDescription %} no-description{% endif %}" id="merchant-header-banner">
+
+        {% if page.merchant.cover is not defined %}
+        <div class="container">
+            {% endif %}
+
+            {# Image #}
+            {% if page.merchant.cover %}
+                <div class="col-12 col-md-12 col-lg-12 merchant-image">
+                    <div class="merchant-image-container">
+                        {% sw_thumbnails 'merchant-thumbnails' with {
+                            media: page.merchant.cover,
+                            sizes: {
+                                'default': '1920px'
+                            },
+                            attributes: {
+                                'class': 'img-fluid',
+                                'alt': page.merchant.publicCompanyName,
+                                'title': page.merchant.publicCompanyName,
+                                'data-object-fit': 'cover'
+                            }
+                        } %}
+                    </div>
+                </div>
+            {% endif %}
+
+
+
+            {% if page.merchant.cover is not defined %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="row fullsize merchant-information">
+        
+
+
+            <div class="col-md-6 col-lg-6">
+
+                {% block component_merchant_availability %}
+                    <div class="col-12">
+                        {% sw_include 'storefront/component/merchant/availability-badge.html.twig' with {'availability': page.merchant.availability, 'availabilityText': page.merchant.availabilityText} %}
+                    </div>
+                {% endblock %}
+				
+              
+                
+                {# Intro #}
+              	
+              	
+              	
+                <div class="col-12">
+                    <h1>{{ page.merchant.publicCompanyName }}</h1>
+                  
+                  	{% if page.merchant.customFields.pinlocation or page.merchant.customFields.whatsapp %}
+                      <div class="col-12 contact-information-content" style="padding-left: 0px;">
+                        {% if page.merchant.customFields.whatsapp %}
+                        <a href="{{ page.merchant.customFields.whatsapp }}" target="blank">
+                          <img style="margin: 10px;" src="https://www.orkiya.com/media/18/a0/19/1668653168/Group 9250.png?width=3000&height=3000">
+                        </a>
+                        {% endif %}
+                        {% if page.merchant.customFields.pinlocation %}
+                        <a href="{{ page.merchant.customFields.pinlocation }}" target="blank">
+                          <img style="margin: 10px;" src="https://www.orkiya.com/media/17/3a/9f/1668653169/chalain.png?width=3000&height=3000">
+                        </a>
+                        {% endif %}
+                        <br>
+                      </div>
+                    {% endif %}
+                    <p>{{ 'merchant.publicOwner'|trans }}: {{ page.merchant.publicOwner }}</p>
+                </div>
+              	
+              
+
+                    
+
+                {% if page.merchant.publicOpeningTimes %}
+                    <div class="col-12 opening-times">
+                        <h6>{{ 'merchant.openingTimes'|trans }}</h6>
+                        <p>
+                            {{ page.merchant.publicOpeningTimes|nl2br }}
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if page.merchant.services is not empty %}
+                    <div class="col-12">
+                        {% sw_include 'storefront/component/merchant/service-items.html.twig' with {
+                            scope: 'detail',
+                            services: page.merchant.services
+                        } %}
+                    </div>
+                {% endif %}
+
+                {# Contact information #}
+                <div class="col-12">
+                    <ul class="contact-information" style="list-style-type: none; padding-left: 10px;">
+
+                        {# Phone #}
+                        {% if page.merchant.publicPhoneNumber %}
+                            <li>
+                                <span class="icon-holder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" fill-rule="evenodd" d="M9.417 9.18c.601 1.027 1.425 2.065 2.472 3.113 1.048 1.048 2.086 1.87 3.114 2.472l1.472-1.472a1 1 0 0 1 1.222-.15l5 3a1 1 0 0 1 .343 1.372l-1.876 3.125a4 4 0 0 1-4.609 1.764c-3.266-1.008-6.294-2.911-9.08-5.697a27.94 27.94 0 0 1-6.179-9.31 4 4 0 0 1 2.44-5.302l3.13-1.044a1 1 0 0 1 1.174.435l3 5a1 1 0 0 1-.15 1.221L9.416 9.18zm11.393 8.163l-3.473-2.084-1.448 1.448a1 1 0 0 1-1.154.188c-1.436-.718-2.855-1.782-4.26-3.188-1.405-1.405-2.47-2.824-3.187-4.26a1 1 0 0 1 .187-1.154l1.448-1.448-2.186-3.643-2.368.79a2 2 0 0 0-1.22 2.652 25.94 25.94 0 0 0 5.74 8.649c2.564 2.564 5.314 4.292 8.256 5.2a2 2 0 0 0 2.304-.882l1.361-2.268z"/></svg>
+                                </span>
+                                <span class="contact-information-content phone">{{ page.merchant.publicPhoneNumber }}</span>
+                            </li>
+                        {% endif %}
+
+                        {# Mail #}
+                        {% if page.merchant.publicEmail %}
+                            <li>
+                                <span class="icon-holder">
+                                    {% sw_icon 'envelope' %}
+                                </span>
+                                <span class="contact-information-content"><a href="mailto:{{ page.merchant.publicEmail }}">{{ page.merchant.publicEmail }}</a></span>
+                            </li>
+                        {% endif %}
+
+                        {# Address #}
+                        {% if page.merchant.street %}
+                            <li>
+                                <span class="icon-holder">
+                                    {% sw_icon 'marker' %}
+                                </span>
+                                <span class="contact-information-content">
+                                  {{ page.merchant.street }}<br>
+                                  {{ page.merchant.zip }} {{ page.merchant.city }}<br>
+                                  {{ page.merchant.country.translated.name }}
+                                </span><br>
+                                
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-6">
+
+                <ul class="contact-information" style="list-style-type: none; padding-left: 10px;">
+                    
+
+                    <li style="padding-top: 30px;">
+                        
+                          <span class="contact-information-content">
+                              <a href="https://orkiya.com/merchant/{{ page.merchant.id }}/check-in">
+                                <button class="btn btn-primary">Check-In({{ page.merchant.customFields.checkin }})</button>
+                              </a>
+                              <a href="https://orkiya.com/merchant/{{ page.merchant.id }}/recommended" target="blank">
+                                <button class="btn btn-secondary">Recommended({{ page.merchant.customFields.recommended }})</button>
+                              </a>
+                            <br>
+                          </span>
+
+                    </li>
+                    {% if page.merchant.tos %}
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#merchantTos">{{ 'merchant.tos'|trans }}</a>
+                        </li>
+                    {% endif %}
+                    {% if page.merchant.privacy %}
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#merchantPrivacy">{{ 'merchant.privacy'|trans }}</a>
+                        </li>
+                    {% endif %}
+                    {% if page.merchant.revocation %}
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#merchantRevocation">Returns & Exchange Policy</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                {% if page.merchant.publicDescription %}
+                    <div class="row merchant-description">
+                        <div class="col-12">
+                            <div class="merchant-description-holder">
+                                <h2 class="text-headline">About the Business</h2>
+                                <p>{{ page.merchant.publicDescription|nl2br }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            
+
+        
+    </div>
+
+    <div class="merchant-detail-lower">
+        <div class="container">
+            {% block base_main_container %}
+                <div class="container-main">
+                    {% block base_breadcrumb %}
+                        {% if breadcrumbList %}
+                            {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' %}
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block base_content %}
+
+                        
+
+                        {% if page.merchant.products.count %}
+                            <div class="row merchant-listing">
+                                <h3 class="col-12 merchant-listing-headline">{{ 'merchant.ourProducts'|trans }}</h3>
+
+                                <div class="listing-wrapper col-12">
+
+                                    <div class="products-wrapper row">
+                                        {% for product in page.merchant.products %}
+
+                                            <div class="product col-sm-6 col-lg-4">
+                                                {% sw_include "@Storefront/storefront/component/product/card/box-standard.html.twig" with {
+                                                    product: product,
+                                                    layout: "standard",
+                                                    displayMode: "cover"
+                                                } %}
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+
+    {% if page.merchant.imprint %}
+        <div class="modal fade" id="merchantImprint" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'merchant.imprint'|trans }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            {{ page.merchant.imprint|nl2br }}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            {{ 'merchant.modal.closeModal'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.merchant.tos %}
+        <div class="modal fade" id="merchantTos" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'merchant.tos'|trans }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            {{ page.merchant.tos|nl2br }}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            {{ 'merchant.modal.closeModal'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.merchant.privacy %}
+        <div class="modal fade" id="merchantPrivacy" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'merchant.privacy'|trans }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            {{ page.merchant.privacy|nl2br }}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            {{ 'merchant.modal.closeModal'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.merchant.revocation %}
+        <div class="modal fade" id="merchantRevocation" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Returns & Exchange Policy</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            {{ page.merchant.revocation|nl2br }}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            {{ 'merchant.modal.closeModal'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block base_footer_inner %}
+    {% sw_include 'storefront/component/merchant/banner.html.twig' %}
+    {{ parent() }}
+{% endblock %}

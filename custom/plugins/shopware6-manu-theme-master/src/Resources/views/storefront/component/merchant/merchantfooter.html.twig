@@ -1,0 +1,30 @@
+<div class="row" style="background-color: #fff; padding-left: 10px;">
+          <h2>How to reach us</h2>
+
+    <div class="col-12">
+       
+        {% if page.merchant.customFields.pinlocation %}
+            <div class="col-12">
+                <div class="iframe-rwd" style="height: 300px; overflow: hidden; position: relative;">
+                    <style>
+                        /* Add your CSS rules here */
+                        .iframe-rwd {
+                            position: relative;
+                            height: 300px;
+                            overflow: hidden;
+                        }
+                        
+                        .iframe-rwd iframe {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                    {{ page.merchant.customFields.pinlocation|raw }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

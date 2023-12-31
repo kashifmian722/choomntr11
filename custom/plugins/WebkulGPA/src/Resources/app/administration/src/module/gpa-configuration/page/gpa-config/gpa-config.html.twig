@@ -1,0 +1,54 @@
+{% block  gpa_config %}
+    <sw-page class="gpa-config-card">
+        {% block gpa_config_smart_bar_action %}
+            <template slot="smart-bar-actions">
+                <sw-button-process
+                    :disabled = "isLoading"
+                    variant = "primary"
+                    :processSuccess = "processSuccess"
+                    @click = "onSaveConfig">
+                    {{ $tc('gpa.config.saveButtonText')}}
+                </sw-button-process>
+            </template>
+        {% endblock %}
+
+        {% block gpa_config_smart_bar_header %}
+            <template slot="smart-bar-header">
+                {% block gpa_config_smart_bar_header_title %}
+                    <h2>
+                        {% block gpa_config_smart_bar_header_title_text %}
+                        {{ $tc('sw-settings.index.title') }} <sw-icon name="small-arrow-medium-right" small></sw-icon> 
+                        {{ $tc('gpa.general.mainMenuItemGeneral') }}
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block gpa_config_content %}
+            <template #content>
+                <sw-card-view>
+                    <sw-card :title="$tc('gpa.config.cardTitleGeneral')">
+                        {% block gpa_config_google_api_key %}
+                            <sw-password-field 
+                            :label="$tc('gpa.config.labelGoogleApiKey')" 
+                            :placeholder ="$tc('gpa.config.placeholderGoogleApiKey')" 
+                            validation="required" 
+                            required  
+                            v-model="config.googleApiKey">
+                            </sw-password-field>
+                        {% endblock %}
+
+                        {% block gpa_config_get_google_lable %}
+                            <div class="gpa-config-card-google-link">
+                                <a :href="$tc('gpa.config.googleApiKeyLink')" target="_blank" :title="$tc('gpa.config.labelGoogleApiKeyLink')">
+                                    {{ $tc('gpa.config.labelGoogleApiKeyLink')}}
+                                </a>
+                            </div>
+                        {% endblock %}
+                    </sw-card>
+                </sw-card-view>
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

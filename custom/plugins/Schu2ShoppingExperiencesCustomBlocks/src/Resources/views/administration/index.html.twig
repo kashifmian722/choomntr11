@@ -1,0 +1,6 @@
+{% sw_extends 'administration/index.html.twig' %}
+
+{% block administration_scripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/schu2shoppingexperiencescustomblocks/administration/js/schu2-shopping-experiences-custom-blocks.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{
+    "name": "schu2/shopping-experiences-custom-blocks",
+    "description": "Custom blocks for shopping experiences",
+    "version": "1.0.1",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Schuja IT",
+            "homepage": "https://schuja.com/"
+        }
+    ],
+    "require": {
+        "shopware/core": ">=6.3.0"
+    },
+    "conflict": {
+        "shopware/storefront": "<6,>=7",
+        "shopware/administration": "<6,>=7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Schu2\\ShoppingExperiencesCustomBlocks\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Schu2\\ShoppingExperiencesCustomBlocks\\Schu2ShoppingExperiencesCustomBlocks",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by Schuja IT",
+        "label": {
+            "de-DE": "Benutzerdefinierte Blöcke für Einkaufserlebnisse",
+            "en-GB": "Custom blocks for shopping experiences"
+        },
+        "description": {
+            "de-DE": "Benutzerdefinierter Block für Shopware 6",
+            "en-GB": "Custom block for Shopware 6"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://schuja.com/",
+            "en-GB": "https://schuja.com/"
+        },
+        "supportLink": {
+            "de-DE": "https://schuja.com/uber-uns/",
+            "en-GB": "https://schuja.com/uber-uns/"
+        }
+    }
+}

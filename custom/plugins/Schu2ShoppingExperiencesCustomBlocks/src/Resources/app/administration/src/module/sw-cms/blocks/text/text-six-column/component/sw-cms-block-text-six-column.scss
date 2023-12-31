@@ -1,0 +1,6 @@
+.sw-cms-block-text-six-column {
+    display: grid;
+    //grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}

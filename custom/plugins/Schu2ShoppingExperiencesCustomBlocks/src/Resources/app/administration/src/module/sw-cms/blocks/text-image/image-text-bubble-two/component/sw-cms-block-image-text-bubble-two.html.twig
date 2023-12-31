@@ -1,0 +1,13 @@
+{% block sw_cms_block_image_text_bubble_two %}
+    <div class="sw-cms-block-image-text-bubble-two">
+        <div class="sw-cms-block-image-text-bubble__left">
+            <slot name="left-image"></slot>
+            <slot name="left-text"></slot>
+        </div>
+
+        <div class="sw-cms-block-image-text-bubble__center">
+            <slot name="center-image"></slot>
+            <slot name="center-text"></slot>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_script %}
+    {{ parent()}}
+    {% block gpa_map_address %}
+        {% sw_include '@Webkul/storefront/wk-gpa/gpa.html.twig' %}
+    {% endblock %}
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('div.card-actions a').click(function() {
+                setTimeout(function() {
+                    $('div.address-editor-create').attr('onClick', 'initMap()');
+                    $('div.address-editor-edit').attr('onClick', 'initMap()');
+                }, 1000);
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+      	<service id="QRCodePlugin\Controller\QRCodeController" public="true">
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver" />
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileNameProvider" />
+            <argument>%kernel.cache_dir%</argument>
+            <argument type="service" id="product.repository" />
+            <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface" />
+            <argument type="service" id="media.repository"/>
+            
+           
+        </service>
+
+    </services>
+</container>

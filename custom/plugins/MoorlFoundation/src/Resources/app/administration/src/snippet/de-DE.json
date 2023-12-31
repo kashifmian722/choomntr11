@@ -1,0 +1,380 @@
+{
+    "moorl-foundation": {
+        "days": {
+            "today": "Heute",
+            "monday": "Montag",
+            "tuesday": "Dienstag",
+            "wednesday": "Mittwoch",
+            "thursday": "Donnerstang",
+            "friday": "Freitag",
+            "saturday": "Samstag",
+            "sunday": "Sonntag"
+        },
+        "buttons": {
+            "saveButtonText": "Save",
+            "newButtonText": "New",
+            "refreshButtonText": "Reload",
+            "cancelButtonText": "Cancel",
+            "startImportButtonText": "Start import",
+            "exportButtonText": "Export CSV",
+            "importButtonTitle": "Upload your CSV",
+            "exportButtonTitle": "Download your CSV",
+            "addMerchantButtonText": "New merchant",
+            "importButtonText": "Import CSV",
+            "getLocButtonText": "Get positions by OpenStreetMap",
+            "selectLocButtonText": "Chose",
+            "openMapButtonText": "Open Map",
+            "overwriteText": "Overwrite existing datarows (originId need to be set).",
+            "mediaFolder": "Save images in this folder"
+        },
+        "properties": {
+            "closed": "Geschlossen",
+            "from": "Ab",
+            "until": "Bis",
+            "info": "Info",
+            "locked": "Gesperrt",
+            "merchant": "Fachhändler",
+            "repeat": "Wiederholen",
+            "sticky": "Sticky",
+            "name": "Name",
+            "invisible": "Unsichtbar",
+            "showFrom": "Zeige ab",
+            "showUntil": "Zeige bis",
+            "date": "Date",
+            "enableComments": "Kommentare erlauben",
+            "metaDescription": "Meta description",
+            "metaTitle": "Meta title",
+            "salesChannel": "Sales channel",
+            "articles": "Articles",
+            "products": "Products",
+            "author": "Author",
+            "slug": "Slug",
+            "content": "Content",
+            "teaser": "Teaser",
+            "image": "Article",
+            "markerSettingsExample": "You can copy this example to adjust your custom marker settings.",
+            "markerSettingsLink": "Leaflet custom marker example",
+            "cmsPageId": "CMS Seiten ID",
+            "logo": "Logo",
+            "markerId": "Marker",
+            "markerShadowId": "Marker Shadow",
+            "markerSettings": "Marker Settings",
+            "location": "Koordinaten",
+            "originId": "Original ID",
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+            "company": "Firma",
+            "email": "E-Mail",
+            "title": "Titel",
+            "active": "Aktiv",
+            "zipcode": "PLZ",
+            "city": "Stadt",
+            "street": "Straße",
+            "streetNumber": "Hausnummer",
+            "countryCode": "Länderkürzel",
+            "locationLat": "Breitengrad",
+            "locationLon": "Längengrad",
+            "department": "Filiale",
+            "vatId": "Steuer-ID",
+            "additionalAddressLine1": "Adressfeld 1",
+            "additionalAddressLine2": "Adressfeld 2",
+            "shopUrl": "Shop URL",
+            "merchantUrl": "Händler URL",
+            "createdAt": "Erstellt",
+            "updatedAt": "Aktualisiert",
+            "phoneNumber": "Telefon",
+            "openingHours": "Öffnungszeiten",
+            "description": "Beschreibung",
+            "salesChannelId": "Sales Channel",
+            "customerGroupId": "Kundengruppe",
+            "countryId": "Land",
+            "country": "Land",
+            "mediaId": "Medien ID",
+            "media": "Medien URL/BLOB",
+            "marker": "Marker URL/BLOB",
+            "markerShadow": "Marker Schatten URL/BLOB",
+            "categories": "Kategorie IDs",
+            "tags": "Tag Namen/IDs",
+            "productManufacturers": "Hersteller IDs",
+            "priority": "Priorität",
+            "highlight": "Hervorheben",
+            "cmsPage": "CMS Seite"
+        },
+        "label": {
+            "accountCard": "Account",
+            "generalCard": "General",
+            "locationCard": "Location",
+            "addressCard": "Address",
+            "markerCard": "Marker",
+            "relationsCard": "Relations and Filters",
+            "visibilityCard": "Visibility",
+            "metaCard": "Meta"
+        }
+    },
+    "moorl-foundation-article": {
+        "general": {
+            "news": "Foundation News Feed",
+            "openUrl": "Öffnen",
+            "truncate": "Leeren"
+        },
+        "properties": {
+            "date": "Datum",
+            "author": "Author",
+            "teaser": "Teaser",
+            "title": "Titel",
+            "content": "Inhalt"
+        }
+    },
+    "moorl-cms": {
+        "general": {
+            "news": "Neuigkeiten von moori"
+        },
+        "detail": {
+            "label": {
+                "blockProCms": "moori CMS Elemente",
+                "blockMoorlCms": "moori CMS Elemente"
+            }
+        },
+        "elements": {
+            "general": {
+                "config": {
+                    "label": {
+                        "offsetTop": "Abstand oben",
+                        "btnClass": "Button Aussehen",
+                        "btnPrimary": "Primary",
+                        "btnPrimaryOutline": "Primary outline",
+                        "btnDanger": "Danger",
+                        "btnDangerOutline": "Danger outline",
+                        "btnSuccess": "Success",
+                        "btnSuccessOutline": "Success outline",
+                        "btnWarning": "Warning",
+                        "btnWarningOutline": "Warning outline",
+                        "btnInfo": "Info",
+                        "btnInfoOutline": "Info outline",
+                        "btnBuy": "Buy",
+                        "btnBuyOutline": "Buy outline",
+                        "btnDark": "Dark",
+                        "btnDarkOutline": "Dark outline",
+                        "btnLink": "Link",
+                        "boxVerticalAlign": "Box vertikale Ausrichtung",
+                        "boxHorizontalAlign": "Box horizontale Ausrichtung",
+                        "top": "Oben",
+                        "center": "Mittig",
+                        "bottom": "Unten",
+                        "left": "Links",
+                        "right": "Rechts",
+                        "boxTextAlign": "Box Text Ausrichtung",
+                        "boxWidth": "Box Breite",
+                        "boxHeight": "Box Länge",
+                        "boxMargin": "Box Aussenabstände",
+                        "boxPadding": "Box Innenabstände",
+                        "boxColor": "Box Schriftfarbe",
+                        "videoActive": "Video Modus",
+                        "videoDisplayMode": "Display mode",
+                        "videoAutoplay": "Automatisch abspielen",
+                        "videoMute": "Ton aus",
+                        "videoLoop": "Wiederholen",
+                        "title": "Titel",
+                        "quote": "Zitat",
+                        "btnActive": "Call to Action Button anzeigen",
+                        "btnText": "Button Text",
+                        "btnUrl": "Button Link",
+                        "iconActive": "Icon anzeigen",
+                        "iconClass": "Icon CSS Klasse (z.B. Font Awesome)",
+                        "iconFontSize": "Icon Schriftgröße",
+                        "iconMarginRight": "Icon Abstand rechts",
+                        "boxMaxWidth": "Maximale Breite für Box-Bereich aktivieren",
+                        "cover": "Cover",
+                        "boxBackground": "Hintergrundfarbe",
+                        "elementType": "Typ",
+                        "custom": "Eigener Text",
+                        "cta": "Call to Action",
+                        "category": "Kategorie Teaser",
+                        "height": "Höhe",
+                        "content": "Inhalt",
+                        "mediaActive": "Medien aktivieren",
+                        "customer": "Kunde",
+                        "company": "Firma",
+                        "rating": "Bewertung",
+                        "selection": "Auswählen",
+                        "rotate": "Rotieren",
+                        "minWidth": "Mindestbreite",
+                        "contentLength": "Maximale Zeichenlänge",
+                        "elementBackground": "Hintergrund (z.B. Als Overlay für Bilder)",
+                        "backgroundFixed": "Fixer Hintergrund",
+                        "animateIn": "Animation Einblenden",
+                        "animateOut": "Animation Ausblenden",
+                        "animateHover": "Animation Maus Über",
+                        "onlyImages": "Zeige nur Bilder",
+                        "useLink": "Verwende Link wenn vorhanden",
+                        "boxHighlightColor": "Box Highlight Schriftfarbe",
+                        "ratingMax": "Maximale mögliche Bewertung",
+                        "typeFront": "Front type",
+                        "text": "Text",
+                        "image": "Image",
+                        "colorScheme": "Color scheme",
+                        "btnLight": "Light",
+                        "btnFacebook": "Facebook",
+                        "btnTwitter": "Twitter",
+                        "btnGoogle": "Google",
+                        "btnShopware": "Shopware",
+                        "flipDirection": "Flip direction",
+                        "up": "Up",
+                        "down": "Down",
+                        "iconActiveFront": "Enable front icon",
+                        "typeBack": "Back type",
+                        "button": "Button",
+                        "product": "Product",
+                        "iconActiveBack": "Enable back icon",
+                        "flipBoxType": "Flip box type",
+                        "square": "Square",
+                        "cube": "Cube",
+                        "styleMasonry": "Masonry",
+                        "styleResponsive": "Responsive",
+                        "styleSlider": "Slider",
+                        "styleTiles": "Tiles",
+                        "styleGrid": "Grid",
+                        "maxResults": "Maximal results",
+                        "maxItems": "Maximal items",
+                        "categoryId": "Category ID",
+                        "showCategories": "Show categories",
+                        "showSearchBar": "Show searchbar",
+                        "showImage": "Show image",
+                        "externalLink": "Open link as",
+                        "externalParentBlog": "External parent (Original blog page)",
+                        "self": "Self",
+                        "popup": "Popup",
+                        "showPagination": "Show pagination",
+                        "feedUrl": "Feed URL",
+                        "style": "Style",
+                        "maxDimensions": "Max dimension",
+                        "borders": "Gutter width",
+                        "styleList": "List",
+                        "ajax": "Load dynamic via AJAX",
+                        "feedAlias": "Feed alias",
+                        "styleMapResults": "Karte zuerst",
+                        "styleResultsMap": "Ergebnisse zuerst",
+                        "styleFixedMap": "Fixe Karte",
+                        "styleResultsOverlay": "Ergebnisse als Overlay",
+                        "mapStyle": "Kartenstyle",
+                        "styleBasic": "Basic",
+                        "categoryFilter": "Kategorie-Filter",
+                        "tagFilter": "Tag-Filter",
+                        "manufacturerFilter": "Hersteller-Filter",
+                        "minHeight": "Mindesthöhe",
+                        "resultsWidth": "Breite Ergebnis-Liste",
+                        "newPrice": "Neuer Preis",
+                        "oldPrice": "Alter Preis",
+                        "startDateTime": "Startzeit",
+                        "endDateTime": "Endzeit",
+                        "showBeforeStart": "Zeige Angebot vor Start",
+                        "teaserText": "Teaser",
+                        "showBadge": "Zeige Badge",
+                        "badgeText": "Badge Text",
+                        "igUsername": "Instagram Name",
+                        "showCaption": "Zeige Beschreibung",
+                        "showComments": "Zeige Kommentare",
+                        "showLikes": "Zeige Likes",
+                        "showLink": "Zeige Link",
+                        "maxImages": "Max Bilder",
+                        "sorting": "Sortierung",
+                        "sortingUploadedAsc": "Upload Zeit aufsteigend",
+                        "sortingUploadedDesc": "Upload Zeit absteigend (Standard)",
+                        "sortingLikesAsc": "Likes aufsteigend",
+                        "sortingLikesDesc": "Likes absteigend",
+                        "sortingCommentsAsc": "Kommentare aufsteigend",
+                        "sortingCommentsDesc": "Kommentare absteigend",
+                        "mediaFolderId": "Select media folder",
+                        "showName": "Show image name",
+                        "sortingNameAsc": "Name ascending",
+                        "sortingNameDesc": "Name descending",
+                        "sortingCustom": "Custom field",
+                        "relationship": "Relationship",
+                        "cssClass": "CSS Class",
+                        "categorySelected": "Kategorie Vorauswahl",
+                        "tagSelected": "Tag Vorauswahl",
+                        "manufacturerSelected": "Hersteller Vorauswahl",
+                        "gridGap": "Grid Abstände"
+                    },
+                    "placeholder": {
+                        "selection": "Suche",
+                        "minWidth": "200px",
+                        "height": "200px",
+                        "feedUrlWordpress": "https://www.yourpage.com/wp-json/wp/v2",
+                        "feedAliasWordpress": "Please make sure, that the alias is configured in the plugin settings.",
+                        "leftPosition": "Enter left position",
+                        "topPosition": "Enter top position",
+                        "igUsername": "Profil muss öffentlich sein"
+                    }
+                }
+            }
+        },
+        "blocks": {
+            "general": {
+                "categoryListing": {
+                    "label": "Kategorie Listing"
+                },
+                "dealCounter": {
+                    "label": "Deal Counter"
+                },
+                "ctaBannerVideo": {
+                    "label": "Call to Action Banner, Video"
+                },
+                "ctaBannerServiceArea": {
+                    "label": "Service Bereich / USPs"
+                },
+                "ctaBannerCategoryThreeColumns": {
+                    "label": "Drei Spalten, Kategorie"
+                },
+                "ctaBannerCategoryTwoColumns": {
+                    "label": "Zwei Spalten, Kategorie"
+                },
+                "ctaBannerbasic": {
+                    "label": "Call to Action Banner"
+                },
+                "multiSliderTwo": {
+                    "label": "Slider, zwei CMS Elemente"
+                },
+                "multiSliderThree": {
+                    "label": "Slider, drei CMS Elemente"
+                },
+                "multiSliderFour": {
+                    "label": "Slider, vier CMS Elemente"
+                },
+                "multiSliderFive": {
+                    "label": "Slider, fünf CMS Elemente"
+                },
+                "brandSlider": {
+                    "label": "Marken Slider"
+                },
+                "categoryBannerThreeColumn": {
+                    "label": "Drei Spalten, Kategorie"
+                },
+                "serviceAreaFourColumn": {
+                    "label": "Vier Spalten, USPs"
+                },
+                "testimonialThreeColumn": {
+                    "label": "Drei Spalten, Testimonial"
+                },
+                "flipBoxThreeColumn": {
+                    "label": "Drei Spalten, Flip Box"
+                },
+                "flipBoxFourColumn": {
+                    "label": "Vier Spalten, Flip Box"
+                },
+                "moorlFancyboxGallery": {
+                    "label": "Image gallery"
+                },
+                "moorlFancyboxGalleryMasonry": {
+                    "label": "Image gallery, masonry"
+                },
+                "moorlFancyboxGalleryTiles": {
+                    "label": "Image gallery, tiles"
+                },
+                "moorlFancyboxGalleryGrid": {
+                    "label": "Image gallery, grid"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "phpschmied/crosssellingamongthemselves",
+    "description": "Shows the cross selling lists among themselves",
+    "version": "v2.2.0",
+    "license": "proprietary",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "PHP-Schmiede",
+            "role": "Manufacturer",
+            "homepage": "https://www.php-schmiede.com"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "phpSchmied\\CrossSellingAmongThemselves\\phpSchmiedCrossSellingAmongThemselves",
+        "label": {
+            "de-DE": "Zeigt die CrossSelling Listen untereinander anstatt in Tabs.",
+            "en-GB": "Shows the cross-selling lists one below the other instead of in tabs"
+        },
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "description": {
+            "de-DE": "Zeigt die CrossSelling Listen untereinander anstatt in Tabs.",
+            "en-GB": "Shows the cross-selling lists one below the other instead of in tabs"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/php-schmiede.html",
+            "en-GB": "https://store.shopware.com/en/php-schmiede.html"
+        },
+        "supportLink": {
+            "de-DE": "https://www.php-schmide.com",
+            "en-GB": "https://www.php-schmide.com"
+        },
+        "copyright": "(c) PHP-Schmiede"
+    },
+    "autoload": {
+        "psr-4": {
+            "phpSchmied\\CrossSellingAmongThemselves\\": "src/"
+        }
+    }
+}

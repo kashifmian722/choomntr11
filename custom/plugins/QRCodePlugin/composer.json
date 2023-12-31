@@ -1,0 +1,27 @@
+{
+  "name": "swag/qrcode-plugin",
+  "description": "This Plugin Generate QR Codes.",
+  "version": "v1.0.0",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Huzaifa Yaseen"
+      }
+  ],
+  "require": {
+      "aferrandini/phpqrcode": "1.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "QRCodePlugin\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "QRCodePlugin\\QRCodePlugin",
+    "label": {
+      "de-DE": "QR Code Plugin",
+      "en-GB": "QR Code Plugin"
+    }
+  }
+}

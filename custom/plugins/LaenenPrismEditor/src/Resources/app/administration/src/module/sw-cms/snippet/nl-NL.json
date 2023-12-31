@@ -1,0 +1,17 @@
+{
+    "sw-cms": {
+        "blocks": {
+            "text": {
+                "lae-prism-html": {
+                    "label": "Prism Code Bewerker Blok"
+                }
+            }
+        },
+        "elements": {
+            "lae-prism-html": {
+                "label": "Prism Code Bewerker",
+                "no-preview": "De voorvertoning van code-elementen is uitgeschakeld wegens veiligheidsredenen."
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "gpa": {
+        "general": {
+            "subMenuItemGeneral": "Configuration",
+            "mainMenuItemGeneral": "Google Pin Address"
+        },
+        "config": {
+            "errorTitle": "Error",
+            "errorGoogleApiKey": "Enter the Google Api Key",
+            "errorLatitude": "Enter your latitude",
+            "errorLongitude": "Enter Your Longitude",
+            "successTitle": "Success",
+            "successMessage": "Configuration is saved",
+            "saveButtonText": "Save",
+            "cardTitleGeneral": "General Setting",
+            "labelGoogleApiKey": "Google Api Key",
+            "placeholderGoogleApiKey": "Enter the google api key",
+            "labelLatitude": "Enter your latitude",
+            "placeholderLatitude": "Enter your latitude",
+            "labelLongitude": "Enter your Longitude",
+            "placeholderLongitude": "Enter your longitude",
+            "helpTextLongitude": "Longitude is used for default address to display on google map",
+            "helpTextLatitude": "Latitude is used for default address to display on google map",
+            "labelGoogleApiKeyLink": "For Google Api Key",
+            "googleApiKeyLink": "https://developers.google.com/maps/documentation/javascript/get-api-key",
+            "labelLatitudeLongitudeLink": "For Latitude and Longitude",
+            "latitudeLongitudeLink": "https://www.latlong.net/"
+        }
+    }
+}

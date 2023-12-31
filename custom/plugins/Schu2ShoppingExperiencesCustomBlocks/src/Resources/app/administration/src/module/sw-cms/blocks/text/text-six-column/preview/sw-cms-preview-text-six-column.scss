@@ -1,0 +1,7 @@
+.sw-cms-preview-text-six-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+    padding: 15px;
+    overflow: auto;
+}

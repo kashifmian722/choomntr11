@@ -1,0 +1,44 @@
+{
+    "name":"webkul/google-pin-address",
+    "description": "The customer can easily fill up the address fields by moving the Google Map drop pin to the desired location.",
+    "version": "1.0.3",
+    "type":"shopware-platform-plugin",
+    "license": "proprietary",
+    "authors":[
+        {
+            "name":"Webkul Software Pvt. Ltd."
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*",
+        "shopware/storefront": "*"
+    },
+    "extra":{
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "shopware-plugin-class":"Webkul\\GPA\\WebkulGPA",
+        "copyright":"(c) by webkul",
+        "label": {
+            "de-DE": "Google PIN-Adresse",
+            "en-GB": "Google Pin Address"
+        },
+        "description": {
+            "de-DE": "Mit dieser Erweiterung kann der Kunde Google Maps auf der Checkout-Seite, der Registrierungsseite und dem Adressbuch verwenden. Der Kunde kann den Standort in Google Maps genau bestimmen und die Adressfelder werden automatisch ausgefüllt.",
+            "en-GB": "This extension allows the customer to use Google Maps on the Checkout page, Registration page, and address book. The customer can pin point the location on the Google Maps and the address fields get filled automatically."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/webkul-software-pvt.-ltd..html",
+            "en-GB": "https://store.shopware.com/en/webkul-software-pvt.-ltd..html"
+        },
+        "supportLink": {
+            "de-DE": "https://store.webkul.com/support.html/",
+            "en-GB": "https://store.webkul.com/support.html/"
+        }
+
+    },
+    "autoload": {
+        "psr-4":{
+            "Webkul\\GPA\\": "src/"
+        }
+    }
+}

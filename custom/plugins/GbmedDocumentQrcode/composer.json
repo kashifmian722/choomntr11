@@ -1,0 +1,45 @@
+{
+    "name": "gbmed/document-qrcode",
+    "description": "Document QR code",
+    "version": "1.0.3",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "gb media, Giuseppe Bottino",
+            "homepage": "https://www.gb-media.biz",
+            "email": "shopware@gb-media.biz"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Gbmed\\DocumentQrcode\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*",
+        "shopware/storefront": "*",
+        "aferrandini/phpqrcode": "1.0.1"
+    },
+    "extra": {
+        "shopware-plugin-class": "Gbmed\\DocumentQrcode\\GbmedDocumentQrcode",
+        "copyright": "(c) gb media, Giuseppe Bottino",
+        "manufacturerLink": {
+            "de-DE": "https://www.gb-media.biz",
+            "en-GB": "https://www.gb-media.biz"
+        },
+        "supportLink": {
+            "de-DE": "https://account.shopware.com/shops/support",
+            "en-GB": "https://account.shopware.com/shops/support"
+        },
+        "label": {
+            "de-DE": "Dokument QR-Code",
+            "en-GB": "Document QR code"
+        },
+        "description": {
+            "de-DE": "QR-Code für Dokumente erstellen",
+            "en-GB": "create QR codes for Documents"
+        }
+    }
+}

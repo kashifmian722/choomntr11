@@ -1,0 +1,68 @@
+{% block sw_media_upload_v2_regular %}
+  {% block pv_media_upload_regular %}
+    <div v-if="variant == 'regular'" class="sw-media-upload-v2__content">
+      <sw-tabs variant="minimal" defaultItem="upload-media">
+        <template v-slot="{ active }">
+          <sw-tabs-item
+            variant="minimal"
+            name="upload-media"
+            :activeTab="active">
+              {{ $t('studiosolid-pv.pv-media-upload.tab-upload.title') }}
+          </sw-tabs-item>
+          <sw-tabs-item
+            variant="minimal"
+            name="embed-video"
+            :activeTab="active">
+              {{ $t('studiosolid-pv.pv-media-upload.tab-embed.title') }}
+          </sw-tabs-item>
+        </template>
+        <template v-slot:content="{ active }">
+          <div v-show="active === 'upload-media'">
+            {% parent %}
+          </div>
+          <div v-show="active === 'embed-video'">
+            <sw-container
+              columns="1fr 1fr"
+              gap="30px">
+              <sw-container>
+                <div>
+                  <sw-help-text
+                  class="video-url-help-text"
+                  :text="$t('studiosolid-pv.pv-media-upload.tab-embed.url-help-text')"
+                  :width="450">
+                  </sw-help-text>
+                  <sw-text-field
+                    :label="$t('studiosolid-pv.pv-media-upload.tab-embed.url')"
+                    v-model="embeddedVideo.url"
+                    @input="onChangeEmbeddedVideoUrl">
+                  </sw-text-field>
+                </div>
+                <sw-media-field
+                  :label="$t('studiosolid-pv.pv-media-upload.tab-embed.thumbnail')"
+                  v-model="embeddedVideo.thumbnailId">
+                </sw-media-field>
+              </sw-container>
+              <sw-radio-field
+                :label="$t('studiosolid-pv.pv-media-upload.tab-embed.source')"
+                :options="[
+                  {'value': 'youtube', 'name': 'YouTube'},
+                  {'value': 'vimeo', 'name': 'Vimeo'},
+                ]"
+                v-model="embeddedVideo.source">
+              </sw-radio-field>
+            </sw-container>
+            <sw-container
+              justify="end">
+              <sw-button
+                variant="primary"
+                :disabled="embeddedVideoAddDisabled"
+                @click="onClickEmbeddedVideoAdd">
+                  {{ $t('studiosolid-pv.pv-media-upload.tab-embed.add') }}
+              </sw-button>
+            </sw-container>
+          </div>
+        </template>
+      </sw-tabs>
+    </div>
+  {% endblock %}
+{% endblock %}

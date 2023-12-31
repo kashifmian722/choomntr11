@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Stylesheet Addon-Ons</title>
+        <title lang="de-DE">Stylesheet Addon-Ons</title>
+        <input-field type="bool">
+            <name>fontawesome</name>
+            <label>Enable Font Awesome 5 Free</label>
+            <label lang="de-DE">Aktiviere Font Awesome 5 Free</label>
+        </input-field>
+        <input-field type="bool">
+            <name>animate</name>
+            <label>Enable Animate.css</label>
+            <label lang="de-DE">Aktiviere Animate.css</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Animate.css Konfiguration</title>
+        <title lang="de-DE">Animate.css Konfiguration</title>
+        <input-field type="textarea">
+            <name>animateIn</name>
+            <label>Animate In</label>
+            <label lang="de-DE">Animate In</label>
+            <defaultValue>.cms-block|slideInUp</defaultValue>
+            <placeholder>#CSS-Selector#|#Animation-Class#</placeholder>
+        </input-field>
+        <input-field type="textarea">
+            <name>animateOut</name>
+            <label>Animate Out</label>
+            <label lang="de-DE">Animate Out</label>
+            <defaultValue></defaultValue>
+            <placeholder>#CSS-Selector#|#Animation-Class#</placeholder>
+        </input-field>
+        <input-field type="textarea">
+            <name>hover</name>
+            <label>Hover</label>
+            <label lang="de-DE">Hover</label>
+            <defaultValue></defaultValue>
+            <placeholder>#CSS-Selector#|#Animation-Class#</placeholder>
+        </input-field>
+    </card>
+
+    <!--card>
+        <title>News Feed</title>
+        <title lang="de-DE">News Feed</title>
+        <input-field type="bool">
+            <name>enableFeed</name>
+            <label>Enable feed</label>
+            <label lang="de-DE">Feed aktivieren</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="textarea">
+            <name>feedUrls</name>
+            <label>Feed API Urls</label>
+            <label lang="de-DE">Feed API Urls</label>
+            <defaultValue><![CDATA[https://moori.net]]></defaultValue>
+            <placeholder><![CDATA[https://moori.net - under construction]]></placeholder>
+        </input-field>
+        <input-field type="bool">
+            <name>pluginFeed</name>
+            <label>Filter feed based on my installed plugins</label>
+            <label lang="de-DE">Nur Plugin relevante Feeds empfangen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field>
+            <name>feedLanguage</name>
+            <label>Desired feed language</label>
+            <label lang="de-DE">Bevorzugte Feed Sprache</label>
+            <placeholder>en, de, en-GB, de-DE... or leave empty for default</placeholder>
+        </input-field>
+        <input-field type="int">
+            <name>feedLastUpdate</name>
+            <label>Last update timestamp</label>
+            <label lang="de-DE">Letztes Update Timestamp</label>
+            <placeholder>Set to 0 to receive complete Feed</placeholder>
+        </input-field>
+        <input-field type="int">
+            <name>feedUpdateInterval</name>
+            <label>Update interval in s</label>
+            <label lang="de-DE">Update Intervall in s</label>
+            <placeholder>Set to 3600 to update every hour</placeholder>
+            <defaultValue>3600</defaultValue>
+        </input-field>
+    </card-->
+</config>

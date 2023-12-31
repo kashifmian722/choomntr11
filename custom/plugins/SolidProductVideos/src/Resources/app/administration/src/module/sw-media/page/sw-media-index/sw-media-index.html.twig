@@ -1,0 +1,10 @@
+{% block sw_media_index_smart_bar_media_upload %}
+  {% block pv_media_upload %}
+    <pv-media-upload
+      variant="compact"
+      fileAccept="image/*, video/*"
+      :targetFolderId="routeFolderId"
+      :uploadTag="uploadTag">
+    </pv-media-upload>
+  {% endblock %}
+{% endblock %}

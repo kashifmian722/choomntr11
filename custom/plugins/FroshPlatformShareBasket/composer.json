@@ -1,0 +1,43 @@
+{
+    "name": "frosh/platform-share-basket",
+    "version": "0.2.2",
+    "type": "shopware-platform-plugin",
+    "description": "Shopware Plugin to share your basket",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "FriendsOfShopware",
+            "homepage": "https://friendsofshopware.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Frosh\\ShareBasket\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Frosh\\ShareBasket\\FroshPlatformShareBasket",
+        "copyright": "FriendsOfShopware",
+        "label": {
+            "de-DE": "Warenkorb teilen",
+            "en-GB": "Share basket"
+        },
+        "description": {
+            "de-DE": "Dieses Plugin erlaubt es Ihren Kunden den aktuellen Warenkorb zu speichern und per Link, E-Mail, Facebook oder WhatsApp zu teilen. Einsehbare gespeicherte Warenkörbe in Administration.",
+            "en-GB": "This plugin allows your customers to save the current shopping cart and share it via link, email, Facebook or WhatsApp. Saved baskets can be viewed in administration."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://github.com/FriendsOfShopware/FroshPlatformShareBasket",
+            "en-GB": "https://github.com/FriendsOfShopware/FroshPlatformShareBasket"
+        },
+        "supportLink": {
+            "de-DE": "https://github.com/FriendsOfShopware/FroshPlatformShareBasket/issues",
+            "en-GB": "https://github.com/FriendsOfShopware/FroshPlatformShareBasket/issues"
+        }
+    },
+    "require": {
+        "shopware/core": "~6.3.0",
+        "shopware/administration": "~6.3.0",
+        "shopware/storefront": "~6.3.0"
+    }
+}

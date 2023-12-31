@@ -1,0 +1,41 @@
+{
+  "name": "studiosolid/product-videos",
+  "description": "Add videos to product galleries in Shopware 6 easily",
+  "version": "1.3.5",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Studio Solid",
+      "homepage": "https://www.studio-solid.de"
+    }
+  ],
+  "require": {
+    "shopware/core": "6.3.x"
+  },
+  "autoload": {
+    "psr-4": {
+      "StudioSolid\\ProductVideos\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "StudioSolid\\ProductVideos\\SolidProductVideos",
+    "copyright": "(c) by Studio Solid",
+    "label": {
+      "de-DE": "Produkt Videos | Videos in der Produktgalerie",
+      "en-GB": "Product videos | Add videos to product gallery"
+    },
+    "description" : {
+      "de-DE": "Videos ganz einfach in die Produktgalerie von Shopware 6 einbinden",
+      "en-GB": "Add videos to product gallery in Shopware 6 easily"
+    },
+    "manufacturerLink" : {
+      "de-DE" : "https://www.studio-solid.de/",
+      "en-GB" : "https://www.studio-solid.de/"
+    },
+    "supportLink" : {
+      "de-DE" : "https://www.studio-solid.de/",
+      "en-GB" : "https://www.studio-solid.de/"
+    }
+  }
+}

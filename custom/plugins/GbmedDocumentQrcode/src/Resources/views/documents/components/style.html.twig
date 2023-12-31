@@ -1,0 +1,10 @@
+{% block document_components_GbmedDocumentQrcode_style %}
+    <style>
+        .line-item td {
+            vertical-align: top;
+        }
+        img.GbmedDocumentQrcode, td.GbmedDocumentQrcode, th.GbmedDocumentQrcode {
+            width: {% if extensions.GbmedDocumentQrcode.qrCodeImageWidth %}{{ extensions.GbmedDocumentQrcode.qrCodeImageWidth }}{% else %}60px{% endif %};
+        }
+    </style>
+{% endblock %}
