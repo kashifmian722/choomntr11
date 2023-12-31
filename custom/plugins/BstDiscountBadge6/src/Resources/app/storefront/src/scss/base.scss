@@ -1,0 +1,15 @@
+.bst-discount-badge {
+  width: auto;
+  padding: 0 5px;
+
+  &.bst-blink-badge {
+    animation: blinker 3s linear infinite;
+  }
+}
+
+@keyframes blinker {
+  50% { opacity: 1; } /* Turn off */
+  50.001% { opacity: 0; }
+  62.999% { opacity: 0; } /* Turn back on */
+  63% { opacity: 1; }
+}

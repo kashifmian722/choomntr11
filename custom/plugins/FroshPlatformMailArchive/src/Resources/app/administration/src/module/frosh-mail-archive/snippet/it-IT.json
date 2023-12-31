@@ -1,0 +1,40 @@
+{
+    "frosh-mail-archive": {
+        "detail": {
+            "content": {
+                "title": "Contenuti"
+            },
+            "metadata": {
+                "salesChannel": "Canale di vendita",
+                "sentDate": "Data di invio",
+                "title": "Metadati",
+                "subject": "Oggetto",
+                "receiver": "Destinatari",
+                "sender": "Mittente"
+            },
+            "toolbar": {
+                "resend": "Rinvia l'e-mail",
+                "customer": "Apri cliente"
+            }
+        },
+        "list": {
+            "sidebar": {
+                "filters": {
+                    "resetFilter": "Reimposta filtro",
+                    "salesChannel": "Canale di vendita",
+                    "customer": "Cliente",
+                    "search": "Ricerca"
+                },
+                "filter": "Filtro",
+                "refresh": "Aggiorna"
+            },
+            "columns": {
+                "action": "Visualizza",
+                "receiver": "Destinatari",
+                "subject": "Oggetto",
+                "sentDate": "Data di invio"
+            }
+        },
+        "title": "E-mail archivio"
+    }
+}

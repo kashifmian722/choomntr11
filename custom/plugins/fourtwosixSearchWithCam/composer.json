@@ -1,0 +1,48 @@
+{
+    "name": "fourtwosix/search-with-cam",
+    "description": "Search products with Cam",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.1",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "426 - Your Digital Upgrade",
+            "homepage": "https://www.426.agency"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "fourtwosix\\SearchWithCam\\fourtwosixSearchWithCam",
+        "label": {
+            "de-DE": "Suchen mit Cam",
+            "en-GB": "Search with Cam",
+            "it-IT": "Cerca con la camera"
+        },
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "description": {
+            "de-DE": "Das Plugin ist in der mobilen Version nützlich, da es der Suchleiste eine Scanfunktion hinzufügt.",
+            "en-GB": "The plugin is useful in the mobile version as it adds a scan function to the search bar.",
+            "it-IT": "Il plugin è utile nella versione mobile perché aggiunge una funzione di scansione alla barra di ricerca."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/426agency.html",
+            "en-GB": "https://store.shopware.com/en/426agency.html"
+        },
+        "supportLink": {
+            "de-DE": "https://www.426.agency/de/kontakt-e-commerce-agentur-bozen/",
+            "en-GB": "https://www.426.agency/en/contact-us-it-services/"
+        },
+        "iconSets": {
+            "custom-icons": "app/storefront/src/assets/icon/default"
+        },
+        "copyright": "(c)2022 by 426 - Your Digital Upgrade"
+    },
+    "autoload": {
+        "psr-4": {
+            "fourtwosix\\SearchWithCam\\": "src/"
+        }
+    }
+}

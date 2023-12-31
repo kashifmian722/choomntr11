@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/component/product/card/badges.html.twig' %}
+
+{% block component_product_badges_new %}
+    {{ parent() }}
+    {% if product.customFields.bcSearchTrending or product.translated.customFields.bcSearchTrending %}
+        <div>
+            <span class="badge badge-primary">
+                {% sw_icon 'trending-up' style {
+                'size': 'sm',
+                'pack': 'solid',
+                'color': 'primary'
+                } %}
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}

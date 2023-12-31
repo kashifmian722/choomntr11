@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+      <card>
+        <title>Orders Count</title>
+        <title lang="de-DE">Anzahl der Aufträge</title>
+         <input-field type="single-select">
+        <name>active</name>
+        <options>
+            <option>
+                <id>1</id>
+                <name>Yes</name>
+                <name lang="de-DE">Ja</name>
+            </option>
+            <option>
+                <id>0</id>
+                <name>No</name>
+                <name lang="de-DE">Nein</name>
+            </option>
+        </options>
+        <label>Activate the plugin </label>
+        <label lang="de-DE">Aktivieren Sie das Plugin</label>
+        <placeholder>Please  select</placeholder>
+        <placeholder lang="de-DE">Bitte wählen Sie</placeholder>
+        </input-field>
+        <input-field type="int">
+            <name>countdays</name>
+            <label>Enter the number of days to count from</label>
+            <label lang="de-DE">Geben Sie die Anzahl der Tage ein, ab denen gezählt werden soll </label>
+            </input-field>        
+    </card>
+</config>

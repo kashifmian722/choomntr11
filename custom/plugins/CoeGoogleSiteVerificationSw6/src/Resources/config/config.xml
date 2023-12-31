@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Settings</title>
+
+        <input-field type="text">
+            <name>CoeGoogleContentId</name>
+            <required>true</required>
+            <label>Google Content ID</label>
+            <label lang="de-DE">Google Content ID</label>
+            <helpText>Please make sure to clear the cache after changes has been made. Otherwise the changes may not be active.</helpText>
+            <helpText lang="de-DE">Nach dem abändern und speichern der Content ID muss der Cache geleert werden damit die Änderungen aktiv werden</helpText>
+        </input-field>
+
+    </card>
+</config>

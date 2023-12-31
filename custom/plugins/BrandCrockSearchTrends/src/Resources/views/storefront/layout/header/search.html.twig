@@ -1,0 +1,49 @@
+{% sw_extends '@Storefront/storefront/layout/header/search.html.twig' %}
+{% block layout_header_search_input_group %}
+    {{ parent() }}
+    {% set bcSearchTrends = page.header.extensions['brand_crock_search_trends'].get('trends') %}
+    {% if bcSearchTrends is not empty %}
+        <div class="search-suggest" style="display:none;" id="bc-search-trends">
+            <ul class="search-suggest-container">
+                <li class="text-primary">{{ "search-trends.title" | trans }}</li>
+                {% for trend in  bcSearchTrends %}
+                    <li class="search-suggest-product bc-search-trends-list">
+                        <a href="{{ trend.bcStu }}"
+                           title="{{ trend.bcStl }}"
+                           class="search-suggest-product-link bc-search-trends-link">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col-auto search-suggest-product-image-container">
+                                    {% sw_icon 'trending-up' style {
+                                    'size': 'sm',
+                                    'pack': 'solid',
+                                    'color': 'primary'
+                                    } %}
+                                </div>
+                                {% block brandcrock_search_trend_result_image %}
+                                    {% if trend.cover.media.url %}
+                                        <div class="col-auto search-suggest-product-image-container">
+                                            {% sw_thumbnails 'search-suggest-product-image-thumbnails' with {
+                                            media: trend.cover.media,
+                                            sizes: {
+                                            'default': '100px'
+                                            },
+                                            attributes: {
+                                            'class': 'search-suggest-product-image',
+                                            'alt': (trend.cover.media.translated.alt ?: ''),
+                                            'title': (trend.cover.media.translated.title ?: '')
+                                            }
+                                            } %}
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                                <div class="col search-suggest-product-name">
+                                    {{ trend.bcStl }}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

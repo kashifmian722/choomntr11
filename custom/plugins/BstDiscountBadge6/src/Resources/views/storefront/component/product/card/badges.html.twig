@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/component/product/card/badges.html.twig' %}
+
+{% set config = page.header.extensions.BstDiscountBadge6.config %}
+
+{% block component_product_badges_discount %}
+    {% set listPrice = product.priceRange or product.calculatedPrices.count > 0 ? null : product.calculatedPrice.listPrice.percentage > 0 %}
+
+    {% if listPrice %}
+        <div class="badge badge-danger badge-discount bst-discount-badge{%if config.blink %} bst-blink-badge{% endif %}">
+            <span>{{ "bst_discount_badge.label"|trans({'%price%': product.calculatedPrice.listPrice.percentage|number_format(config.decimalAmount) })|sw_sanitize }}</span>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget-price.html.twig' %}
+
+{% set config = page.header.extensions.BstDiscountBadge6.config %}
+
+{% block page_product_detail_was_price_badge %}
+    <span class="list-price-badge bst-discount-badge{%if config.blink %} bst-blink-badge{% endif %}" style="width: auto;">{{ "bst_discount_badge.label"|trans({'%price%': listPrice.percentage|number_format(config.decimalAmount) })|sw_sanitize }}</span>
+{% endblock %}
+
+{% block page_product_detail_was_price_wrapper %}
+    <span class="product-detail-list-price-wrapper">
+        <span class="list-price-price">{{ listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+    </span>
+{% endblock %}

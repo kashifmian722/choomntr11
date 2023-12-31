@@ -1,0 +1,45 @@
+{
+  "name": "bc/brand-crock-search-trends",
+  "description": "Ever imagine to show the trending products of your store in just a click ? This Plugin helps to make it as real !",
+  "type": "shopware-platform-plugin",
+  "version": "v1.1.1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "BrandCrock GmbH",
+      "role": "Manufacturer",
+      "homepage":"https://www.brandcrock.com/"
+    }
+  ],
+  "require": {
+    "shopware/core": "*",
+    "shopware/storefront": "*"
+
+  },
+  "autoload": {
+    "psr-4": {
+      "Bc\\BrandCrockSearchTrends\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Bc\\BrandCrockSearchTrends\\BrandCrockSearchTrends",
+    "plugin-icon": "src/Resources/config/brandcrock-search-trends.png",
+    "copyright": "(c) by BrandCrock GmbH",
+    "label": {
+      "de-DE": "Trends Suchen",
+      "en-GB": "Search Trends"
+    },
+    "description": {
+      "de-DE": "Stellen Sie sich jemals vor, die Trendprodukte Ihres Geschäfts mit nur einem Klick zu zeigen? Dieses Plugin hilft dabei, es so real wie möglich zu machen!",
+      "en-GB": "Ever imagine to show the trending products of your store in just a click ? This Plugin helps to make it as real !"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://www.brandcrock.com/de/startseite/",
+      "en-GB": "https://www.brandcrock.com/"
+    },
+    "supportLink": {
+      "de-DE": "https://www.brandcrock.com/de/kontakt-uns/",
+      "en-GB": "https://www.brandcrock.com/contact-us/"
+    }
+  }
+}

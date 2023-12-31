@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+    <title>Mode Configuration</title>
+    <title lang="de-DE">Moduskonfiguration</title>
+        <input-field type="single-select">
+            <name>searchMode</name>
+            <options>
+                <option>
+                    <id>manual</id>
+                    <name>Manual Mode</name>
+                    <name lang="de-DE">Manueller Modus</name>
+                </option>
+                <option>
+                    <id>automatic</id>
+                    <name>Automatic Mode</name>
+                    <name lang="de-DE">Automatischer Modus</name>
+                </option>
+            </options>
+            <defaultValue>automatic</defaultValue>
+            <label>Search Mode</label>
+            <label lang="de-DE">Suchmodus</label>
+            <helpText>Automatic mode can dynamically pick trending product from your store and displays it, where as manual mode allows to display the search trends that are filled below !</helpText>
+            <helpText lang="de-DE">Im automatischen Modus können Trendprodukte dynamisch aus Ihrem Geschäft ausgewählt und angezeigt werden. Im manuellen Modus können die unten aufgeführten Suchtrends angezeigt werden</helpText>
+        </input-field>
+    </card>
+    <card>
+        <title>Manual Search Trends</title>
+        <title lang="de-DE">Manuelle Suchtrends</title>
+        <input-field>
+            <name>searchTrendLabel1</name>
+            <copyable>false</copyable>
+            <label>Search Trends Label 1</label>
+            <label lang="de-DE">Suche Trends Label 1</label>
+            <placeholder>Product / Category to display</placeholder>
+            <placeholder lang="de-DE">Produkt / Kategorie angezeigt werden</placeholder>
+            <helpText>Please fill in to display the search at first </helpText>
+            <helpText lang="de-DE">Bitte füllen Sie aus, um die Suche zuerst anzuzeigen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendUrl1</name>
+            <copyable>false</copyable>
+            <label>URL for Search Trends Label 1</label>
+            <label lang="de-DE">URL für Suchtrends Label 1</label>
+            <placeholder>Enter the URL to redirect</placeholder>
+            <placeholder lang="de-DE">Geben Sie die URL ein, die umgeleitet werden soll</placeholder>
+            <helpText>Leave this field empty, to auto redirect based on given keyword</helpText>
+            <helpText lang="de-DE">Lassen Sie dieses Feld leer, um die automatische Umleitung basierend auf dem angegebenen Schlüsselwort durchzuführen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendLabel2</name>
+            <copyable>false</copyable>
+            <label>Search Trends Label 2</label>
+            <label lang="de-DE">Suche Trends Label 2</label>
+            <placeholder>Product / Category to display</placeholder>
+            <placeholder lang="de-DE">Produkt / Kategorie angezeigt werden</placeholder>
+            <helpText>Please fill in to display the search at second </helpText>
+            <helpText lang="de-DE">Bitte füllen Sie aus, um die Suche in Sekunden anzuzeigen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendUrl2</name>
+            <copyable>false</copyable>
+            <label>URL for Search Trends Label 2</label>
+            <label lang="de-DE">URL für Suchtrends Label 2</label>
+            <placeholder>Enter the URL to redirect</placeholder>
+            <placeholder lang="de-DE">Geben Sie die URL ein, die umgeleitet werden soll</placeholder>
+            <helpText>Leave this field empty, to auto redirect based on given keyword</helpText>
+            <helpText lang="de-DE">Lassen Sie dieses Feld leer, um die automatische Umleitung basierend auf dem angegebenen Schlüsselwort durchzuführen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendLabel3</name>
+            <copyable>false</copyable>
+            <label>Search Trends Label 3</label>
+            <label lang="de-DE">Suche Trends Label 3</label>
+            <placeholder>Product / Category to display</placeholder>
+            <placeholder lang="de-DE">Produkt / Kategorie angezeigt werden</placeholder>
+            <helpText>Please fill in to display the search at third</helpText>
+            <helpText lang="de-DE">Bitte füllen Sie aus, um die Suche an dritter Stelle anzuzeigen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendUrl3</name>
+            <copyable>false</copyable>
+            <label>URL for Search Trends Label 3</label>
+            <label lang="de-DE">URL für Suchtrends Label 3</label>
+            <placeholder>Enter the URL to redirect</placeholder>
+            <placeholder lang="de-DE">Geben Sie die URL ein, die umgeleitet werden soll</placeholder>
+            <helpText>Leave this field empty, to auto redirect based on given keyword</helpText>
+            <helpText lang="de-DE">Lassen Sie dieses Feld leer, um die automatische Umleitung basierend auf dem angegebenen Schlüsselwort durchzuführen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendLabel4</name>
+            <copyable>false</copyable>
+            <label>Search Trends Label 4</label>
+            <label lang="de-DE">Suche Trends Label 4</label>
+            <placeholder>Product / Category to display</placeholder>
+            <placeholder lang="de-DE">Produkt / Kategorie angezeigt werden</placeholder>
+            <helpText>Please fill in to display the search at fourth </helpText>
+            <helpText lang="de-DE">Bitte füllen Sie aus, um die Suche an vierter Stelle anzuzeigen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendUrl4</name>
+            <copyable>false</copyable>
+            <label>URL for Search Trends Label 4</label>
+            <label lang="de-DE">URL für Suchtrends Label 4</label>
+            <placeholder>Enter the URL to redirect</placeholder>
+            <placeholder lang="de-DE">Geben Sie die URL ein, die umgeleitet werden soll</placeholder>
+            <helpText>Leave this field empty, to auto redirect based on given keyword</helpText>
+            <helpText lang="de-DE">Lassen Sie dieses Feld leer, um die automatische Umleitung basierend auf dem angegebenen Schlüsselwort durchzuführen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendLabel5</name>
+            <copyable>false</copyable>
+            <label>Search Trends Label 5</label>
+            <label lang="de-DE">Suche Trends Label 5</label>
+            <placeholder>Product / Category to display</placeholder>
+            <placeholder lang="de-DE">Produkt / Kategorie angezeigt werden</placeholder>
+            <helpText>Please fill in to display the search at fifth </helpText>
+            <helpText lang="de-DE">Bitte füllen Sie aus, um die Suche an fünfter Stelle anzuzeigen</helpText>
+        </input-field>
+        <input-field>
+            <name>searchTrendUrl5</name>
+            <copyable>false</copyable>
+            <label>URL for Search Trends Label 5</label>
+            <label lang="de-DE">URL für Suchtrends Label 5</label>
+            <placeholder>Enter the URL to redirect</placeholder>
+            <placeholder lang="de-DE">Geben Sie die URL ein, die umgeleitet werden soll</placeholder>
+            <helpText>Leave this field empty, to auto redirect based on given keyword</helpText>
+            <helpText lang="de-DE">Lassen Sie dieses Feld leer, um die automatische Umleitung basierend auf dem angegebenen Schlüsselwort durchzuführen</helpText>
+        </input-field>
+    </card>
+    <card>
+        <title>Trend Labelling</title>
+        <title lang="de-DE">Trendkennzeichnung</title>
+        <input-field type="bool">
+            <name>trendLabelling</name>
+            <label>Enable Trend Labelling</label>
+            <label lang="de-DE">Trendkennzeichnung aktivieren</label>
+            <helpText>By enabling this option, the trend badge will be added automatically on the products based on it's trends.</helpText>
+            <helpText lang="de-DE">Wenn Sie diese Option aktivieren, wird das Trend-Badge automatisch auf den Produkten basierend auf ihren Trends hinzugefügt</helpText>
+        </input-field>
+    </card>
+</config>

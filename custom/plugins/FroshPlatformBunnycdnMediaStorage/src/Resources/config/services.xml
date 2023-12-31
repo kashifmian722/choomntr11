@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="frosh_bunnycdn_media_storage.cache_dir">%kernel.project_dir%/var/cache/bunnycdn_storage</parameter>
+    </parameters>
+
+    <services>
+        <service class="Frosh\BunnycdnMediaStorage\Adapter\BunnyCdnFactory"
+                 id="Shopware\Core\Framework\Adapter\Filesystem\FilesystemFactory.bunnycdn">
+            <tag name="shopware.filesystem.factory"/>
+            <argument type="service" id="Frosh\BunnycdnMediaStorage\Adapter\Cache"/>
+            <argument type="string">%kernel.shopware_version%</argument>
+        </service>
+
+        <service id="Frosh\BunnycdnMediaStorage\Adapter\Cache" class="Doctrine\Common\Cache\FilesystemCache">
+            <argument type="string">%frosh_bunnycdn_media_storage.cache_dir%</argument>
+        </service>
+
+        <service id="Frosh\BunnycdnMediaStorage\Storefront\Subscriber\SitemapPageSubscriber">
+            <argument type="string">%shopware.cdn.url%</argument>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Frosh\BunnycdnMediaStorage\Subscriber\ConfigSubscriber">
+            <argument type="service" id="Frosh\BunnycdnMediaStorage\Service\ConfigUpdater"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Frosh\BunnycdnMediaStorage\Service\ConfigUpdater">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheClearer"/>
+            <argument type="string">%frosh_bunnycdn_media_storage.config_path%</argument>
+        </service>
+
+        <service id="Frosh\BunnycdnMediaStorage\Controller\Api\ApiTestController" public="true">
+            <argument type="service" id="Frosh\BunnycdnMediaStorage\Adapter\Cache"/>
+        </service>
+
+    </services>
+</container>

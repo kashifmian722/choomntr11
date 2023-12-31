@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_meta_tags_schema_webpage %}
+    {{ parent() }}
+
+    {% block layout_head_meta_google_site_verification %}
+        {% if  shopware.config.CoeGoogleSiteVerificationSw6.config.CoeGoogleContentId%}
+            <meta name="google-site-verification"
+                  content="{{ shopware.config.CoeGoogleSiteVerificationSw6.config.CoeGoogleContentId }}" />
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}

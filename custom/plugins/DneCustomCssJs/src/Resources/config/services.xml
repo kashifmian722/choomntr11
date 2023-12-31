@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Dne\CustomCssJs\Core\Content\Module\ModuleDefinition">
+            <tag name="shopware.entity.definition" entity="dne_custom_js_css" />
+        </service>
+
+        <service id="Dne\CustomCssJs\Services\FilesystemDecorator" public="true">
+            <argument type="service" id="shopware.filesystem.theme"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+
+        <service id="Dne\CustomCssJs\Api\ThemeCompileController" public="true">
+            <argument type="service" id="Shopware\Storefront\Theme\ThemeService"/>
+            <argument type="service" id="sales_channel.repository"/>
+        </service>
+    </services>
+</container>

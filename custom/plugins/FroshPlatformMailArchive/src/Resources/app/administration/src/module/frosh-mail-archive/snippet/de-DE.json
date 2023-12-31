@@ -1,0 +1,40 @@
+{
+    "frosh-mail-archive": {
+        "title": "Mail Archiv",
+        "list": {
+            "columns": {
+                "sentDate": "Versanddatum",
+                "subject": "Betreff",
+                "receiver": "Empfänger",
+                "action": "Anzeigen"
+            },
+            "sidebar": {
+                "refresh": "Neuladen",
+                "filter": "Filter",
+                "filters": {
+                    "search": "Suche",
+                    "customer": "Kunde",
+                    "salesChannel": "Verkaufskanal",
+                    "resetFilter": "Filter zurücksetzen"
+                }
+            }
+        },
+        "detail": {
+            "toolbar": {
+                "customer": "Kunden öffnen",
+                "resend": "E-Mail erneut versenden"
+            },
+            "metadata": {
+                "title": "Metadaten",
+                "sentDate": "Versanddatum",
+                "sender": "Absender",
+                "receiver": "Empfänger",
+                "subject": "Betreff",
+                "salesChannel": "Verkaufskanal"
+            },
+            "content": {
+                "title": "Inhalt"
+            }
+        }
+    }
+}

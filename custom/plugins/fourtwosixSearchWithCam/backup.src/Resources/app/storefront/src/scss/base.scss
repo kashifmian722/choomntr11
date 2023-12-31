@@ -1,0 +1,9 @@
+body {
+	.modal {
+		&.modal-barcode-search {
+			video {
+				width: 100%;
+			}
+		}
+	}
+}

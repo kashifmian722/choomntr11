@@ -1,0 +1,29 @@
+{% sw_extends "@Storefront/storefront/layout/header/header.html.twig" %}
+
+
+{% block layout_header_search_button %}
+	<div class="input-group-append">
+		<button type="button" class="btn header-search-btn barcode-button" data-barcode-trigger="true">
+			{% sw_icon 'barcode' style { namespace: "fourtwosixSearchWithCam" } %}
+		</button>
+	</div>
+	{{ parent() }}
+{% endblock %}
+
+{% block layout_header_search_input_group %}
+	{{ parent() }}
+	<div class="modal fade modal-barcode-search" data-barcode-modal="true" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<video data-barcode-video="true"></video>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

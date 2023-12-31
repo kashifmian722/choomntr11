@@ -1,0 +1,7 @@
+{
+    "total-count-text": {
+        "title": {
+             "showntext": "%s Kunden haben dies in den letzten %s Tagen bestellt"
+        }
+    }
+}

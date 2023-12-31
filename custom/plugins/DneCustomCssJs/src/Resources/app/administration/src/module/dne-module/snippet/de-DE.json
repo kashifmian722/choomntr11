@@ -1,0 +1,18 @@
+{
+    "dne-customcssjs": {
+        "modules": {
+            "menu": "Custom CSS/JS",
+            "title": "CSS/JS Container",
+            "addModulesButton": "Container hinzufügen",
+            "nameLabel": "Name",
+            "cssLabel": "CSS/SCSS",
+            "jsLabel": "JavaScript",
+            "activeLabel": "Aktiv",
+            "saveButton": "Speichern",
+            "saveCompileButton": "Speichern & Kompilieren",
+            "cancelButton": "Abbrechen",
+            "donateText": "Klicken Sie hier, wenn Sie dieses kostenlose Plugin unterstützen oder mir einen Kaffee ausgeben möchten",
+            "credit": "David Neustadt - kontakt@davidneustadt.de - https://neustadt.dev"
+        }
+    }
+}

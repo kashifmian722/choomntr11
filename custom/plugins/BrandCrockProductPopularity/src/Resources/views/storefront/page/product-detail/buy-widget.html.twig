@@ -1,0 +1,19 @@
+{% sw_extends '@storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_tax %}
+
+	{{ parent() }} 
+	
+	{% if page.extensions['bcOrderCouent'].get('count') !='' %}
+	{% set bccount = "total-count-text.title.showntext"|trans  %}
+	<div class="row product-detail-main">
+		<div class="col-lg-12">
+			<h3 class="free-product-title-main">
+			{{ bccount | format(page.extensions['bcOrderCouent'].get('count') , page.extensions['bcOrderCouent'].get('days')  ) }}
+			
+			</h3>
+		</div>
+	</div> 
+	{% endif %} 
+	
+{% endblock %}
