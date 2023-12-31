@@ -1,0 +1,42 @@
+{
+    "name": "bc/brand-crock-product-popularity",
+    "description": "Product Popularity",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "BrandCrock GmbH",
+            "homepage": "https://brandcrock.com"
+        }
+    ],
+    "require": {
+        "shopware/core": "^6.2",
+        "shopware/storefront": "^6.2"
+    },
+    "extra": {
+        "shopware-plugin-class": "Bc\\BrandCrockProductPopularity\\BrandCrockProductPopularity",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "label": {
+            "de-DE": "Produkt-Popularität",
+            "en-GB": "Product Popularity"
+        },
+        "description": {
+            "de-DE": "Das Produktpopularitäts-Plugin hilft Ihnen dabei, die Popularität eines Produkts auf der entsprechenden Produktdetailseite anzuzeigen und die Anzahl der Kunden zu ermitteln, die das Produkt kürzlich gekauft haben. Die Gesamtzahl erhöht sich, wenn ein Kunde innerhalb eines bestimmten Zeitraums eine Bestellung aufgibt.",
+            "en-GB": "Product popularity plugin helps you show the popularity of a product in the relevant product details page.This plugin can be used to reveal the number of customers who brought the product recently. The total count keeps increasing when a customer places order within the specific period."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/brandcrock-gmbh.html",
+            "en-GB": "https://store.shopware.com/en/brandcrock-gmbh.html"
+        },
+        "supportLink": {
+            "de-DE": "https://store.shopware.com/brandcrock-gmbh.html",
+            "en-GB": "https://store.shopware.com/en/brandcrock-gmbh.html"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Bc\\BrandCrockProductPopularity\\": "src/"
+        }
+    }
+}
