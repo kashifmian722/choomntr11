@@ -1,0 +1,12 @@
+{% extends 'storefront/base.html.twig' %}
+
+{% block page_content %}
+    <div class="merchant-search-results">
+        <h1>Search Results for "{{ searchTerm }}"</h1>
+        {% for merchant in merchants %}
+            {# Display each merchant here #}
+        {% else %}
+            <p>No merchants found for '{{ searchTerm }}'</p>
+        {% endfor %}
+    </div>
+{% endblock %}
